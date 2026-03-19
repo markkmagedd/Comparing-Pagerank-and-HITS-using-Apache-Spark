@@ -1,0 +1,56 @@
+openapi: 3.0.0
+info:
+  title: PageRank Analysis API
+  version: 1.0.0
+paths:
+  /api/pagerank:
+    post:
+      summary: Computes PageRank and returns limited topology for web mapping.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                direction:
+                  type: string
+                  enum: [buyers, sellers]
+                iterations:
+                  type: integer
+                  default: 10
+                damping_factor:
+                  type: number
+                  default: 0.85
+                top_n:
+                  type: integer
+                  default: 10
+      responses:
+        '200':
+          description: A Cytoscape.js compatible graph representation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  nodes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        data:
+                          type: object
+                          properties:
+                            id: { type: string }
+                            rank: { type: number }
+                  edges:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        data:
+                          type: object
+                          properties:
+                            source: { type: string }
+                            target: { type: string }
+                            weight: { type: number }
