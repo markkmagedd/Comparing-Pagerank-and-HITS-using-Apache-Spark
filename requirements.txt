@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+pyspark
+jinja2
+pytest
+httpx
+requests

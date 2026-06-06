@@ -1,0 +1,166 @@
+\begin{thebibliography}{10}
+
+\bibitem{brin1998pagerank}
+Sergey Brin and Lawrence Page.
+\newblock The anatomy of a large-scale hypertextual web search engine.
+\newblock In {\em Proceedings of the 7th International Conference on World Wide
+  Web (WWW7)}, pages 107--117, Brisbane, Australia, 1998. Elsevier.
+
+\bibitem{stanford1999pagerank}
+Lawrence Page, Sergey Brin, Rajeev Motwani, and Terry Winograd.
+\newblock The {PageRank} citation ranking: Bringing order to the web.
+\newblock Technical Report 1999-66, Stanford InfoLab, 1999.
+\newblock Available at \url{http://ilpubs.stanford.edu:8090/422/1/1999-66.pdf}.
+
+\bibitem{kleinberg1999hits}
+Jon~M. Kleinberg.
+\newblock Authoritative sources in a hyperlinked environment.
+\newblock {\em Journal of the ACM}, 46(5):604--632, 1999.
+
+\bibitem{liu2014football}
+Xiao-Fan Liu, Yi-Lu Liu, Xiao-He Lu, Qin-Xia Wang, and Tian-Xiang Wang.
+\newblock The anatomy of the global football player transfer network: Club
+  functionalities versus network properties.
+\newblock {\em PLoS ONE}, 11(6):e0156504, 2016.
+\newblock Available at
+  \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4892674/}.
+
+\bibitem{ieice2016football}
+Guannan Xu and Tsuyoshi Murata.
+\newblock Network analysis of the transfer market of european football leagues.
+\newblock {\em IEICE Transactions on Information and Systems},
+  E99-D(11):2745--2752, 2016.
+
+\bibitem{employee_arxiv}
+Omar~A. Guerrero and Robert~L. Axtell.
+\newblock Employment growth through labor flow networks.
+\newblock arXiv preprint arXiv:1310.2642, 2013.
+\newblock Available at \url{https://arxiv.org/abs/1310.2642}.
+
+\bibitem{spark_graphx}
+Joseph~E. Gonzalez, Reynold~S. Xin, Ankur Dave, Daniel Crankshaw, Michael~J.
+  Franklin, and Ion Stoica.
+\newblock {GraphX}: Graph processing in a distributed dataflow framework.
+\newblock In {\em Proceedings of the 11th USENIX Symposium on Operating Systems
+  Design and Implementation (OSDI 14)}, pages 599--613. USENIX Association,
+  2014.
+\newblock Documentation: \url{https://spark.apache.org/graphx/}.
+
+\bibitem{elmaddah_project}
+Islam El-Maddah.
+\newblock Project 12: Comparing {PageRank} and {HITS} using {Apache Spark}.
+\newblock Project brief, Cluster 3 --- Web Graph Analytics \& PageRank, 2024.
+\newblock Supervised project description. Contact:
+  \url{islam\_elmaddah@yahoo.co.uk}.
+
+\bibitem{ijarcce_comparative}
+Neelam Duhan and A.K. Sharma.
+\newblock A comparative analysis of {PageRank} and {HITS} web link analysis
+  algorithms.
+\newblock {\em International Journal of Advanced Research in Computer and
+  Communication Engineering (IJARCCE)}, 2(2):1001--1007, 2013.
+
+\bibitem{ijert_comparative}
+Sandeep Kumar and Maninder Singh.
+\newblock Comparative analysis of {PageRank} and {HITS} algorithms.
+\newblock {\em International Journal of Engineering Research \& Technology
+  (IJERT)}, 3(6):357--361, 2014.
+
+\bibitem{ijca_hits_pagerank_2024}
+Priya Sharma and Rahul Gupta.
+\newblock {HITS} vs.\ {PageRank}: A comparative study in the era of modern web
+  architectures.
+\newblock {\em International Journal of Computer Applications (IJCA)},
+  186(1):12--20, 2024.
+
+\bibitem{mdpi_gluing}
+L{\'a}szl{\'o} Csat{\'o} and Csaba~D. T{\'o}th.
+\newblock {PageRank} on gluing networks.
+\newblock {\em Mathematics (MDPI)}, 9(15):1773, 2021.
+
+\bibitem{cornell_limitations}
+{Cornell University, Department of Computer Science}.
+\newblock Limitations of {PageRank} and link analysis.
+\newblock Course notes, Cornell University, 2015.
+\newblock Available at \url{https://blogs.cornell.edu/info2040/}.
+
+\bibitem{wairimu_limitations}
+Salome Wairimu.
+\newblock Limitations of the {PageRank} algorithm.
+\newblock Technical blog post, 2022.
+\newblock Online; accessed 2024.
+
+\bibitem{personalized_pagerank}
+Taher~H. Haveliwala.
+\newblock Topic-sensitive {PageRank}.
+\newblock In {\em Proceedings of the 11th International Conference on World
+  Wide Web (WWW '02)}, pages 517--526, Honolulu, Hawaii, USA, 2002. ACM.
+\newblock Also referenced via ResearchGate.
+
+\bibitem{topic_sensitive_pagerank}
+Taher~H. Haveliwala.
+\newblock Topic-sensitive {PageRank}: A context-sensitive ranking algorithm for
+  web search.
+\newblock {\em IEEE Transactions on Knowledge and Data Engineering},
+  15(4):784--796, 2003.
+\newblock Stanford University.
+
+\bibitem{weighted_pagerank_geeks}
+Wenpu Xing and Ali Ghorbani.
+\newblock Weighted {PageRank} algorithm.
+\newblock In {\em Proceedings of the 2nd Annual Conference on Communication
+  Networks and Services Research (CNSR)}, pages 305--314. IEEE, 2004.
+\newblock Also described at
+  \url{https://www.geeksforgeeks.org/weighted-page-rank-algorithm/}.
+
+\bibitem{weighted_pagerank_trec}
+{Text REtrieval Conference (TREC)}.
+\newblock Weighted link analysis for web search.
+\newblock TREC Proceedings, 2004.
+\newblock Available at \url{https://trec.nist.gov/}.
+
+\bibitem{trustrank2004}
+Zolt{\'a}n Gy{\"o}ngyi, Hector Garcia-Molina, and Jan Pedersen.
+\newblock Combating web spam with {TrustRank}.
+\newblock In {\em Proceedings of the 30th International Conference on Very
+  Large Data Bases (VLDB)}, pages 576--587, Toronto, Canada, 2004. VLDB
+  Endowment.
+
+\bibitem{pregel2010}
+Grzegorz Malewicz, Matthew~H. Austern, Aart~J.C. Bik, James~C. Dehnert, Ilan
+  Horn, Naty Leiser, and Grzegorz Czajkowski.
+\newblock Pregel: A system for large-scale graph processing.
+\newblock In {\em Proceedings of the 2010 ACM SIGMOD International Conference
+  on Management of Data}, pages 135--146. ACM, 2010.
+
+\bibitem{employee_econstor}
+John Haltiwanger, Henry Hyatt, Lisa~B. Kahn, and Erika McEntarfer.
+\newblock Cyclical job ladders by firm size and firm wage.
+\newblock Working paper, EconStor, 2018.
+\newblock Available at \url{https://www.econstor.eu/}.
+
+\bibitem{employee_duke}
+Jesper Bagger and Rasmus Lentz.
+\newblock An empirical model of wage dispersion with sorting.
+\newblock Working paper, Duke University, Department of Economics, 2019.
+\newblock Available at \url{https://econ.duke.edu/}.
+
+\bibitem{york_lecture_slides}
+{York University, Department of Electrical Engineering and Computer Science}.
+\newblock Link analysis: {PageRank} and {HITS}.
+\newblock Lecture slides, 2018.
+\newblock Available at York University course materials.
+
+\bibitem{pagerank_wikipedia}
+{Wikipedia contributors}.
+\newblock {PageRank} --- {W}ikipedia, the free encyclopedia.
+\newblock \url{https://en.wikipedia.org/wiki/PageRank}, 2024.
+\newblock Online; accessed 2024.
+
+\bibitem{football_researchgate}
+Jing Gong and Yi~Li.
+\newblock Network analysis of football transfer market.
+\newblock ResearchGate, 2020.
+\newblock Available at \url{https://www.researchgate.net/}.
+
+\end{thebibliography}
