@@ -1,6 +1,6 @@
 import pytest
 from pyspark.sql import SparkSession
-from src.core.processing import TransferAnalyzer, get_available_leagues
+from src.core.processing import TransferAnalyzer, get_available_leagues, run_hits
 
 @pytest.fixture(scope="session")
 def spark():
@@ -61,3 +61,81 @@ def test_weight_mode_comparison(spark):
     # At minimum, verify weight labels are different
     assert "M" in res_fee["edges"][0]["weight_label"]
     assert "deals" in res_count["edges"][0]["weight_label"]
+
+def test_run_hits_basic(spark):
+    # Create a small network: A -> B, A -> C, B -> C
+    # Expected: C has highest Authority, A has highest Hub
+    edges_list = [
+        ("Club A", ("Club B", 10.0)),
+        ("Club A", ("Club C", 20.0)),
+        ("Club B", ("Club C", 5.0))
+    ]
+    edges_rdd = spark.sparkContext.parallelize(edges_list)
+    
+    authorities, hubs = run_hits(edges_rdd, iterations=5)
+    
+    auth_scores = dict(authorities.collect())
+    hub_scores = dict(hubs.collect())
+    
+    assert "Club C" in auth_scores
+    assert "Club A" in hub_scores
+    
+    # Validate Authority: C should be highest as it has 2 incoming edges
+    assert auth_scores["Club C"] > auth_scores["Club B"]
+    
+    # Validate Hub: A should be highest as it has 2 outgoing edges
+    assert hub_scores["Club A"] > hub_scores["Club B"]
+    
+    # Validate L2 Normalization (Auth)
+    a_sq_sum = sum(v**2 for v in auth_scores.values())
+    assert pytest.approx(a_sq_sum, rel=1e-5) == 1.0
+    
+    # Validate L2 Normalization (Hub)
+    h_sq_sum = sum(v**2 for v in hub_scores.values())
+    assert pytest.approx(h_sq_sum, rel=1e-5) == 1.0
+
+def test_hits_authority_vs_hub(spark):
+    analyzer = TransferAnalyzer(spark, "transfers.csv")
+    
+    # Authority (Buyers)
+    res_auth = analyzer.get_top_graph(direction='buyers', algorithm='hits', iterations=1, top_n=5)
+    assert res_auth["meta"]["score_type"] == "authority"
+    assert res_auth["meta"]["algorithm"] == "hits"
+    assert len(res_auth["nodes"]) > 0
+    
+    # Hub (Sellers)
+    res_hub = analyzer.get_top_graph(direction='sellers', algorithm='hits', iterations=1, top_n=5)
+    assert res_hub["meta"]["score_type"] == "hub"
+    assert res_hub["meta"]["algorithm"] == "hits"
+    assert len(res_hub["nodes"]) > 0
+
+def test_hits_vs_pagerank_differ(spark):
+    analyzer = TransferAnalyzer(spark, "transfers.csv")
+    
+    # Run both on same data
+    res_pagerank = analyzer.get_top_graph(algorithm='pagerank', top_n=10)
+    res_hits = analyzer.get_top_graph(algorithm='hits', top_n=10)
+    
+    ids_pagerank = [n["id"] for n in res_pagerank["nodes"]]
+    ids_hits = [n["id"] for n in res_hits["nodes"]]
+    
+    # Algorithms are different, rankings should likely vary at some positions
+    # (Checking for exact Inequality might be risky on small data, but HITS and PR are very different)
+    assert ids_pagerank != ids_hits
+
+def test_hits_with_league_filter(spark):
+    # Intra-league Premier League
+    analyzer = TransferAnalyzer(spark, "transfers.csv", league="Premier League")
+    res = analyzer.get_top_graph(algorithm='hits', direction='buyers', iterations=1, top_n=5)
+    
+    assert res["meta"]["league"] == "Premier League"
+    assert res["meta"]["empty"] == False
+    assert len(res["nodes"]) > 0
+
+def test_hits_with_count_weight(spark):
+    analyzer = TransferAnalyzer(spark, "transfers.csv", weight_mode="count")
+    res = analyzer.get_top_graph(algorithm='hits', direction='buyers', iterations=1, top_n=5)
+    
+    assert res["meta"]["weight_mode"] == "count"
+    for edge in res["edges"]:
+        assert "deals" in edge["weight_label"]

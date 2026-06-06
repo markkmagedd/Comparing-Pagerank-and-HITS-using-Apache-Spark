@@ -84,3 +84,64 @@ def test_pagerank_empty_state_integration():
         data = response.json()
         assert data["meta"]["empty"] == True
         assert len(data["nodes"]) == 0
+
+def test_hits_endpoint():
+    with TestClient(app) as client:
+        payload = {
+            "algorithm": "hits",
+            "direction": "buyers",
+            "iterations": 1,
+            "top_n": 5
+        }
+        response = client.post("/api/pagerank", json=payload)
+        assert response.status_code == 200
+        data = response.json()
+        assert data["meta"]["algorithm"] == "hits"
+        assert data["meta"]["score_type"] == "authority"
+        assert len(data["nodes"]) > 0
+        assert "rank" in data["nodes"][0]["data"]
+
+def test_algorithm_default_backward_compat():
+    with TestClient(app) as client:
+        # No algorithm field
+        payload = {
+            "direction": "buyers",
+            "top_n": 5
+        }
+        response = client.post("/api/pagerank", json=payload)
+        assert response.status_code == 200
+        data = response.json()
+        # Should default to pagerank
+        assert data["meta"]["algorithm"] == "pagerank"
+        assert data["meta"]["score_type"] == "pagerank"
+
+def test_hits_empty_state():
+    with TestClient(app) as client:
+        payload = {
+            "algorithm": "hits",
+            "league": "NON_EXISTENT_LEAGUE"
+        }
+        response = client.post("/api/pagerank", json=payload)
+        assert response.status_code == 200
+        data = response.json()
+        assert data["meta"]["empty"] == True
+        assert len(data["nodes"]) == 0
+
+def test_hits_with_filters_integration():
+    with TestClient(app) as client:
+        payload = {
+            "algorithm": "hits",
+            "league": "Premier League",
+            "weight_mode": "count",
+            "direction": "sellers",
+            "iterations": 2,
+            "top_n": 5
+        }
+        response = client.post("/api/pagerank", json=payload)
+        assert response.status_code == 200
+        data = response.json()
+        assert data["meta"]["algorithm"] == "hits"
+        assert data["meta"]["score_type"] == "hub"
+        assert data["meta"]["league"] == "Premier League"
+        assert data["meta"]["weight_mode"] == "count"
+        assert len(data["nodes"]) > 0

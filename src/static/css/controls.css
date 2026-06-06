@@ -1,15 +1,20 @@
+/* ═══════════════════════════════════════════════════════════════
+   CONTROLS  —  Overlays, spinners, empty-state
+   ═══════════════════════════════════════════════════════════════ */
+
 #viz-loading {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(2, 6, 23, 0.7);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    z-index: 100;
+    backdrop-filter: blur(8px);
     transition: opacity 0.3s ease-in-out;
 }
 
@@ -22,8 +27,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--bg-color, #f8f9fa);
-    z-index: 900;
+    background: rgba(2, 6, 23, 0.95);
+    z-index: 90;
+    backdrop-filter: blur(4px);
 }
 
 .empty-content {
@@ -40,44 +46,27 @@
 
 .empty-content h3 {
     margin: 0.5rem 0;
-    color: var(--text-color, #333);
+    color: var(--text-primary);
 }
 
 .empty-content p {
-    color: #666;
+    color: var(--text-muted);
     font-size: 0.9rem;
 }
 
-.secondary-btn {
-    background: transparent;
-    border: 1px solid #ddd;
-    color: #666;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    margin-top: 0.5rem;
-    width: 100%;
-    transition: all 0.2s;
-}
-
-.secondary-btn:hover {
-    background: #f0f0f0;
-    border-color: #ccc;
-}
-
+/* Re-declare hidden with high specificity for controls layer */
 .hidden {
     display: none !important;
     opacity: 0;
     pointer-events: none;
 }
 
-/* Spinner for recalculating state */
+/* Spinner inside viz-loading — use the shared spinner class */
 #viz-loading .spinner {
     width: 40px;
     height: 40px;
-    border: 3px solid rgba(0, 0, 0, 0.1);
-    border-top-color: var(--primary-color, #007bff);
+    border: 3px solid rgba(59, 130, 246, 0.1);
+    border-top-color: var(--accent-blue, #3b82f6);
     border-radius: 50%;
     animation: spin 1s linear infinite;
     margin-bottom: 1rem;

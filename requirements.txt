@@ -4,3 +4,4 @@ pyspark
 jinja2
 pytest
 httpx
+requests

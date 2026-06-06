@@ -3,46 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PageRank Transfer Visualizer</title>
+    <title>Transfer Network Analyzer</title>
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/controls.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.26.0/cytoscape.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
     <div class="app-container">
         <aside class="sidebar">
-            <header>
-                <h1>Transfer Analyzer</h1>
-                <p class="subtitle">PySpark PageRank Visualization</p>
-                
-                <div class="viz-toggle-container">
-                    <button type="button" class="viz-toggle-btn active" data-viz="chart">Bar Chart</button>
-                    <button type="button" class="viz-toggle-btn" data-viz="network">Network Graph</button>
+            <!-- Brand -->
+            <div class="sidebar-brand">
+                <div class="brand-icon">⚡</div>
+                <div>
+                    <h1>Transfer Analyzer</h1>
+                    <p class="subtitle">PySpark Graph Algorithm Visualization</p>
                 </div>
-            </header>
+            </div>
 
+            <!-- Visualization mode switcher -->
+            <div class="viz-toggle-container">
+                <button type="button" class="viz-toggle-btn active" data-viz="chart">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="12" width="4" height="9"/><rect x="10" y="7" width="4" height="14"/><rect x="17" y="2" width="4" height="19"/></svg>
+                    Chart
+                </button>
+                <button type="button" class="viz-toggle-btn" data-viz="network">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><line x1="8.5" y1="7.5" x2="15.5" y2="16.5"/><line x1="15.5" y1="7" x2="8.5" y2="7"/></svg>
+                    Network
+                </button>
+                <button type="button" class="viz-toggle-btn" data-viz="chord">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>
+                    Flows
+                </button>
+                <button type="button" class="viz-toggle-btn" data-viz="compare">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="18"/><rect x="14" y="3" width="7" height="18"/></svg>
+                    Compare
+                </button>
+            </div>
+
+            <!-- Race link -->
+            <a href="/analysis" class="race-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5,3 19,12 5,21"/></svg>
+                Historical Rankings Race
+                <span class="race-arrow">→</span>
+            </a>
+
+            <!-- Divider -->
+            <div class="sidebar-divider"></div>
+
+            <!-- Section label -->
+            <div class="section-label">Configuration</div>
+
+            <!-- Form -->
             <form id="analyzer-form">
-                <div class="form-group">
-                    <label for="direction">Analysis Target</label>
-                    <select id="direction" name="direction">
-                        <option value="buyers">Attractors (Buyers)</option>
-                        <option value="sellers">Suppliers (Sellers)</option>
-                    </select>
+                <!-- Row: Algorithm + Direction -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="algorithm">Algorithm</label>
+                        <select id="algorithm" name="algorithm">
+                            <option value="pagerank" selected>PageRank</option>
+                            <option value="hits">HITS</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="direction">Target</label>
+                        <select id="direction" name="direction">
+                            <option value="buyers">Attractors (Buyers)</option>
+                            <option value="sellers">Suppliers (Sellers)</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="iterations">Iterations</label>
-                    <input type="number" id="iterations" name="iterations" value="10" min="1" max="50">
-                    <small>Higher = more accurate convergence</small>
-                </div>
-
-                <div class="form-group">
-                    <label for="damping">Damping Factor</label>
-                    <input type="number" id="damping" name="damping" value="0.85" min="0" max="1" step="0.01">
-                    <small>Probability of continuing the path</small>
+                <!-- Row: Iterations + Damping -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="iterations">Iterations</label>
+                        <input type="number" id="iterations" name="iterations" value="10" min="1" max="50">
+                        <small>Convergence depth</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="damping">Damping</label>
+                        <input type="number" id="damping" name="damping" value="0.85" min="0" max="1" step="0.01">
+                        <small>Path probability</small>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -52,25 +98,86 @@
                         <option disabled>Loading leagues...</option>
                     </select>
                 </div>
-
-                <div class="form-group">
-                    <label for="weight_mode">Weighting Mode</label>
-                    <select id="weight-mode" name="weight_mode">
-                        <option value="fee">Transfer Fee (€)</option>
-                        <option value="count">Transfer Count (qty)</option>
-                    </select>
+                
+                <!-- Row: Season range -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="start_season">Start</label>
+                        <select id="start-season" name="start_season">
+                            <option value="all">All</option>
+                            <option value="2000-2001">2000-01</option>
+                            <option value="2001-2002">2001-02</option>
+                            <option value="2002-2003">2002-03</option>
+                            <option value="2003-2004">2003-04</option>
+                            <option value="2004-2005">2004-05</option>
+                            <option value="2005-2006">2005-06</option>
+                            <option value="2006-2007">2006-07</option>
+                            <option value="2007-2008">2007-08</option>
+                            <option value="2008-2009">2008-09</option>
+                            <option value="2009-2010">2009-10</option>
+                            <option value="2010-2011">2010-11</option>
+                            <option value="2011-2012">2011-12</option>
+                            <option value="2012-2013">2012-13</option>
+                            <option value="2013-2014">2013-14</option>
+                            <option value="2014-2015">2014-15</option>
+                            <option value="2015-2016">2015-16</option>
+                            <option value="2016-2017">2016-17</option>
+                            <option value="2017-2018">2017-18</option>
+                            <option value="2018-2019">2018-19</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="end_season">End</label>
+                        <select id="end-season" name="end_season">
+                            <option value="all">All</option>
+                            <option value="2000-2001">2000-01</option>
+                            <option value="2001-2002">2001-02</option>
+                            <option value="2002-2003">2002-03</option>
+                            <option value="2003-2004">2003-04</option>
+                            <option value="2004-2005">2004-05</option>
+                            <option value="2005-2006">2005-06</option>
+                            <option value="2006-2007">2006-07</option>
+                            <option value="2007-2008">2007-08</option>
+                            <option value="2008-2009">2008-09</option>
+                            <option value="2009-2010">2009-10</option>
+                            <option value="2010-2011">2010-11</option>
+                            <option value="2011-2012">2011-12</option>
+                            <option value="2012-2013">2012-13</option>
+                            <option value="2013-2014">2013-14</option>
+                            <option value="2014-2015">2014-15</option>
+                            <option value="2015-2016">2015-16</option>
+                            <option value="2016-2017">2016-17</option>
+                            <option value="2017-2018">2017-18</option>
+                            <option value="2018-2019">2018-19</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="top_n">Top N Results</label>
-                    <input type="number" id="top_n" name="top_n" value="10" min="5" max="50">
-                    <small>Limits graph for legibility</small>
+                <!-- Row: Weight mode + Top N -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="weight_mode">Weight</label>
+                        <select id="weight-mode" name="weight_mode">
+                            <option value="fee">Fee (€)</option>
+                            <option value="count">Count (qty)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="top_n">Top N</label>
+                        <input type="number" id="top_n" name="top_n" value="10" min="5" max="50">
+                    </div>
                 </div>
 
-                <button type="submit" id="run-btn">Run Algorithm</button>
-                <button type="button" id="reset-controls" class="secondary-btn">Reset Defaults</button>
+                <div class="form-actions">
+                    <button type="submit" id="run-btn" class="btn-primary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5,3 19,12 5,21"/></svg>
+                        Run Algorithm
+                    </button>
+                    <button type="button" id="reset-controls" class="btn-ghost">Reset</button>
+                </div>
             </form>
 
+            <!-- Footer -->
             <footer class="sidebar-footer">
                 <div id="status-indicator" class="status-ready">
                     <span class="dot"></span>
@@ -80,9 +187,35 @@
         </aside>
 
         <main class="main-content">
+            <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle Sidebar">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div id="cy-container"></div>
             <div id="chart-container" class="hidden">
-                <canvas id="rankChart"></canvas>
+                <div class="results-metadata">
+                    <span id="season-range-meta" class="meta-badge hidden"></span>
+                    <div id="overlap-summary" class="hidden"></div>
+                </div>
+                <div id="chart-panel-main" class="chart-panel">
+                    <h2 id="chart-label-left" class="chart-title hidden">PageRank</h2>
+                    <canvas id="rankChart"></canvas>
+                </div>
+                <div id="chart-panel-right" class="chart-panel hidden">
+                    <h2 id="chart-label-right" class="chart-title">HITS</h2>
+                    <canvas id="rankChartRight"></canvas>
+                </div>
+            </div>
+
+            <div id="chord-container" class="hidden">
+                <div class="results-metadata">
+                    <span id="chord-season-meta" class="meta-badge"></span>
+                </div>
+                <div class="chart-panel">
+                    <h2 class="chart-title">Global Transfer Market Flows</h2>
+                    <div id="chord-wrapper" class="chord-wrapper"></div>
+                </div>
             </div>
             
             <div id="viz-loading" class="hidden">
@@ -106,6 +239,27 @@
                 <div class="node-info">
                     <h3 id="node-name">-</h3>
                     <p>Rank: <span id="node-rank">0.0000</span></p>
+                </div>
+            </div>
+
+            <!-- Transfer Details Popup -->
+            <div id="transfer-popup" class="transfer-popup hidden">
+                <div class="transfer-header">
+                    <h3 id="popup-club-name">Club Name</h3>
+                    <button id="close-popup" class="close-popup" title="Close Details">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+                <div id="popup-content" class="transfer-content">
+                    <div id="popup-loading" class="transfer-loading hidden">
+                        <div class="skeleton-item"></div>
+                        <div class="skeleton-item"></div>
+                        <div class="skeleton-item"></div>
+                    </div>
+                    <div id="popup-empty" class="transfer-empty hidden">
+                        <p>No major transfers found for this filter.</p>
+                    </div>
+                    <ul id="popup-list" class="transfer-list"></ul>
                 </div>
             </div>
         </main>

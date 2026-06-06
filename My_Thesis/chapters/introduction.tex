@@ -1,0 +1,77 @@
+\chapter{Introduction}
+\label{ch:introduction}
+
+The World Wide Web, since its inception, has grown into one of the largest and most structurally complex information systems ever constructed by humanity. By the late 1990s, the exponential proliferation of web pages rendered purely content-based retrieval methods inadequate for distinguishing authoritative sources from the vast sea of marginally relevant or deliberately misleading pages~\cite{brin1998pagerank}. This fundamental inadequacy motivated a paradigm shift in information retrieval: the exploitation of the hyperlink structure of the web as a proxy for human editorial judgment. A hyperlink from page $A$ to page $B$ was reconceptualized not merely as a navigational convenience but as an implicit endorsement---a vote of confidence in the quality, relevance, or authority of the destination page~\cite{stanford1999pagerank}.
+
+This insight gave rise to the field of \textit{link analysis}, which applies graph-theoretic and linear-algebraic techniques to extract meaningful rankings, influence measures, and structural roles from the topology of interconnected networks. Two algorithms, in particular, emerged as the foundational contributions to this field: the \textbf{PageRank} algorithm, introduced by Brin and Page in 1998~\cite{brin1998pagerank}, and the \textbf{Hyperlink-Induced Topic Search (HITS)} algorithm, proposed by Kleinberg in 1999~\cite{kleinberg1999hits}. PageRank assigns a single, global importance score to every node in a directed graph by modeling a random walk with teleportation, while HITS decomposes the roles of nodes into two complementary dimensions---hubs and authorities---computed over a query-specific subgraph.
+
+Although both algorithms were originally conceived for web search ranking, their mathematical generality has enabled their application to a wide array of complex networks beyond the web, including social networks, citation graphs, biological interaction networks, economic systems, and, as explored in this thesis, professional sports transfer markets~\cite{liu2014football, ieice2016football, employee_arxiv}. Simultaneously, the ever-increasing scale of real-world networks has necessitated the adoption of distributed computing frameworks capable of processing graphs with millions or billions of edges. Apache Spark, with its in-memory computation model, resilient distributed datasets (RDDs), and specialized graph processing library GraphX, has emerged as a leading platform for large-scale graph analytics~\cite{spark_graphx}.
+
+
+%=============================================================
+\section{Motivation}
+\label{sec:motivation}
+
+In 1998, Sergey Brin and Larry Page introduced the PageRank algorithm, fundamentally shifting web search from purely textual matching to structural link analysis. By conceptualizing the World Wide Web as a massive directed graph, PageRank operated on the premise that a hyperlink from one page to another acts as an endorsement. This allowed search engines to rank pages based on their objective, topological authority rather than easily manipulated keyword frequencies, significantly improving the quality of information retrieval~\cite{brin1998pagerank}.
+
+Shortly thereafter, in 1999, Jon Kleinberg proposed the HITS algorithm, which took a fundamentally different, query-dependent approach by recognizing that web pages serve two distinct semantic functions: providing authoritative information and providing curated directories of links~\cite{kleinberg1999hits}. The concurrent emergence of these two complementary paradigms established a rich design space for link analysis that continues to inform modern information retrieval, recommendation systems, and network science.
+
+The football transfer market, in which clubs exchange players for monetary fees, naturally forms a weighted directed graph whose analysis via link analysis algorithms can reveal the systemic centrality, market competitiveness, and structural roles of participating clubs~\cite{liu2014football, ieice2016football}. The convergence of algorithmic theory, real-world network applications, and scalable distributed infrastructure forms the tripartite motivation for this thesis.
+
+As articulated in the project brief by Dr.\ El-Maddah~\cite{elmaddah_project}, the implementation of PageRank and HITS using Apache Spark GraphX provides students with hands-on experience in distributed systems and large-scale algorithm execution, with applications spanning large-scale recommendation engines, enterprise search tools, fraud detection networks, and large social network analysis. The skills required encompass Apache Spark, GraphX, Scala/Python, distributed computation, and cloud processing~\cite{elmaddah_project}.
+
+
+%=============================================================
+\section{Problem Statement}
+\label{sec:problem_statement}
+
+Despite the extensive individual study of PageRank and HITS in the literature, a significant gap persists in the availability of unified, interactive, and reproducible comparative frameworks that allow researchers and practitioners to:
+\begin{enumerate}[label=(\alph*)]
+    \item execute both algorithms on the same real-world dataset under identical conditions,
+    \item systematically vary algorithmic parameters (e.g., damping factor, iteration count, edge weighting scheme) and observe the impact on output rankings, and
+    \item visualize the results through multiple complementary modalities---ranked lists, network topologies, and inter-cluster flow diagrams---within a single cohesive tool.
+\end{enumerate}
+
+Furthermore, the vast majority of existing comparative studies confine their analysis to web-graph or synthetic datasets~\cite{ijarcce_comparative, ijert_comparative, ijca_hits_pagerank_2024}, leaving the behavior of these algorithms on non-web complex networks---particularly weighted, financially driven networks such as the football transfer market---insufficiently explored. The question of how the global, query-independent ranking of PageRank and the local, dual-score decomposition of HITS differentially characterize the structural roles of nodes in such networks remains open.
+
+This thesis addresses the following research questions:
+
+\begin{itemize}
+    \item \textbf{RQ1:} What are the theoretical and computational distinctions between the PageRank and HITS algorithms in terms of their mathematical formulations, convergence guarantees, scalability, and vulnerability to manipulation?
+    \item \textbf{RQ2:} How can both algorithms be implemented within a unified distributed computing pipeline using Apache Spark (PySpark) and applied to a real-world weighted directed graph derived from professional football transfer data?
+    \item \textbf{RQ3:} What structural insights do PageRank and HITS, respectively, reveal about the football transfer network, and how do these insights differ across configurable parameters such as damping factor, iteration count, and edge weighting mode?
+\end{itemize}
+
+
+%=============================================================
+\section{Objectives}
+\label{sec:objectives}
+
+To address the research questions stated above, this thesis pursues the following objectives:
+
+\begin{enumerate}
+    \item \textbf{Theoretical Synthesis:} Provide a comprehensive and self-contained exposition of the mathematical formulations of both PageRank and HITS, including their Markov chain and eigenvector interpretations, convergence properties, computational complexity, known limitations, and principal modified variants.
+
+    \item \textbf{Comparative Analysis:} Develop a rigorous, multi-dimensional comparative framework that contrasts PageRank and HITS along the axes of execution model (offline vs.\ online), graph scope (global vs.\ local), score semantics (single score vs.\ dual hub--authority scores), vulnerability to manipulation, and suitability for different network analysis tasks.
+
+    \item \textbf{Distributed Implementation:} Design and implement a distributed graph processing pipeline using Apache Spark (PySpark) that ingests real-world football transfer data, constructs a weighted directed graph, and executes both PageRank and HITS with configurable parameters.
+
+    \item \textbf{Application Artifact:} Develop a full-stack web application---the \textit{Transfer Analyzer}---that serves as the user-facing interface for the distributed pipeline, exposing interactive visualizations (bar charts, network graphs, transfer flow chord diagrams) and enabling systematic exploration of algorithmic behavior.
+
+    \item \textbf{Domain Application:} Demonstrate the applicability of link analysis algorithms to non-web complex networks by analyzing the football transfer market and interpreting the resulting scores in terms of club centrality, market influence, and structural role.
+\end{enumerate}
+
+
+%=============================================================
+\section{Thesis Outline}
+\label{sec:thesis_outline}
+
+The remainder of this thesis is organized as follows:
+
+\textbf{Chapter~\ref{ch:background}: Background.} This chapter provides the theoretical foundations necessary for the subsequent analysis. Section~\ref{sec:concepts_overview} presents the core concepts, including the mathematical formulations of both PageRank and HITS, their modified variants, and the architecture of Apache Spark for distributed graph processing. Section~\ref{sec:literature_review} surveys the relevant literature across five thematic areas: the evolution of PageRank, the development of HITS, comparative studies of the two algorithms, distributed implementations of link analysis, and graph analytics applied to non-web domains. Section~\ref{sec:datasets} describes the football transfer dataset used as the real-world graph in our implementation. Section~\ref{sec:eval_metrics_bg} defines the evaluation metrics employed for comparing algorithmic outputs. Section~\ref{sec:bg_discussion} synthesizes the reviewed literature and identifies the gap addressed by this thesis.
+
+\textbf{Chapter~\ref{ch:methodology}: Methodology.} This chapter details the design and implementation of the comparative study. Section~\ref{sec:problem_formulation} provides the formal problem formulation, casting the football transfer market as a weighted directed graph. Section~\ref{sec:pipeline} describes the distributed graph processing pipeline, from data ingestion through algorithm execution to result aggregation. Section~\ref{sec:experiments} presents the experimental design for the comparative analysis. Section~\ref{sec:implementation} details the implementation. Section~\ref{sec:transfer_analyzer} presents the architecture and functionality of the Transfer Analyzer web application. Subsequent sections cover the PySpark backend, frontend interface, configurable parameters, algorithm integration, and expected analytical outputs.
+
+\textbf{Chapter~\ref{ch:results}: Results.} This chapter presents the experimental setting, dataset description, tools used, evaluation metrics, configurable parameters, comparative analysis findings, and the development and testing environment.
+
+\textbf{Chapter~\ref{ch:conclusion}: Conclusion and Future Work.} This chapter summarizes the contributions of the thesis, discusses the implications of the comparative findings, and outlines directions for future research.

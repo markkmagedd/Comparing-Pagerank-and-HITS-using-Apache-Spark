@@ -1,0 +1,43 @@
+\chapter{Conclusion}
+\label{ch:conclusion}
+
+\section{Summary of the Thesis}
+\label{sec:conclusion_summary}
+
+This thesis presented a comparative study of the PageRank and HITS algorithms within the context of distributed graph processing using Apache Spark. While both algorithms were originally developed for hyperlink analysis and web search, the work demonstrated that their mathematical foundations can be meaningfully transferred to a non-web domain, namely the professional football transfer market. By modeling clubs as nodes and transfer relations as weighted directed edges, the thesis transformed football transfer activity into a graph structure suitable for large-scale link analysis.
+
+The study addressed both theoretical and practical dimensions. On the theoretical side, it reviewed the foundations of PageRank and HITS and clarified the distinction between PageRank's global notion of importance and HITS's dual hub--authority interpretation. On the practical side, it developed a complete analytical framework that allows both algorithms to be executed on the same dataset under shared filtering and weighting conditions, thereby enabling direct comparison.
+
+\section{Main Contributions}
+\label{sec:conclusion_contributions}
+
+The main contributions of the thesis can be summarized as follows:
+\begin{enumerate}
+    \item \textbf{A unified comparative framework.} The thesis established a common analytical environment in which PageRank and HITS can be applied to the same weighted directed graph and interpreted through the same set of filters, parameters, and visualization modes.
+
+    \item \textbf{A graph-based formulation of the football transfer market.} The work formalized football transfers as a weighted directed network, making it possible to analyze the market using graph-ranking methods rather than relying solely on descriptive or financial summaries.
+
+    \item \textbf{A distributed implementation using PySpark.} The thesis implemented both algorithms using Apache Spark's distributed processing model, providing a scalable computational foundation for iterative graph analysis.
+
+    \item \textbf{An interactive analytical application.} The \textit{Transfer Analyzer} web application exposed the ranking results through bar charts, network graphs, league-flow views, side-by-side comparison mode, and a historical animated ranking view.
+
+    \item \textbf{A domain-specific interpretation of graph rankings.} The thesis translated the abstract outputs of PageRank and HITS into football-specific meanings such as buyer attractors, supplier clubs, authorities, hubs, and league-level transfer dynamics.
+\end{enumerate}
+
+\section{Comparative Conclusions}
+\label{sec:conclusion_findings}
+
+The central conclusion of the thesis is that PageRank and HITS do not produce interchangeable views of the football transfer market. Instead, they illuminate different structural properties of the same network.
+
+PageRank is most naturally interpreted as a measure of global transfer-market centrality. It highlights clubs that occupy influential positions in the broader directed flow of player movement. HITS, by contrast, provides a role-based decomposition that distinguishes destination power from supplier power through authority and hub scores. This distinction is especially valuable in football transfer analysis because the market contains clubs that mainly attract talent, clubs that mainly supply talent, and clubs that participate in both roles to different degrees.
+
+The comparative analysis also showed that algorithmic interpretation depends strongly on the graph model chosen. Fee-weighted analysis emphasizes financial magnitude and high-value transfers, while count-weighted analysis emphasizes repeated activity and transactional frequency. League filters and season filters further demonstrate that centrality is not universal but depends on competitive context and temporal scope. Together, these observations support the broader claim that the value of comparing PageRank and HITS lies not in selecting a single superior algorithm, but in understanding how each one reveals a different dimension of network structure.
+
+\section{Final Remarks}
+\label{sec:conclusion_final}
+
+Overall, the thesis showed that the football transfer market is a compelling application domain for graph-ranking methods because it combines directional exchange, financial weight, structural asymmetry, and temporal evolution within a single real-world network. By integrating theory, distributed implementation, and interactive analysis, the work contributes both a conceptual comparison of PageRank and HITS and a practical system for exploring their behavior.
+
+The resulting framework offers a reproducible foundation for future graph-based studies of football economics and, more broadly, of other complex socioeconomic systems that can be represented as weighted directed networks.
+
+%\let\cleardoublepage\clearpage

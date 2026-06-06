@@ -1,0 +1,46 @@
+\chapter{Future Work}
+\label{ch:future_work}
+
+Although the current thesis provides a strong foundation for comparing PageRank and HITS on the football transfer network, several important extensions remain possible. These directions would strengthen both the technical system and the analytical depth of the study.
+
+\section{Algorithmic Extensions}
+\label{sec:future_algorithms}
+
+One natural direction for future work is to expand the comparison beyond PageRank and HITS. Other graph-based ranking and centrality methods, such as eigenvector centrality, Katz centrality, SALSA, or community-aware ranking approaches, could be integrated into the same framework. This would allow the football transfer market to be studied through a broader range of structural perspectives.
+
+Another promising extension is the incorporation of personalized or topic-sensitive variants of PageRank. In the football context, these variants could be adapted to emphasize particular leagues, club tiers, geographical regions, or player categories, thereby producing more specialized notions of influence.
+
+\section{Data Enrichment}
+\label{sec:future_data}
+
+The current thesis focuses on transfer relations weighted by fee or count. Future versions of the dataset could be enriched with additional attributes such as player age, position, nationality, market value, contract duration, or club performance in the same season. This would make it possible to build more nuanced graph representations and study specific market dimensions in greater detail.
+
+An especially valuable extension would be the integration of more recent seasons and continuous dataset updates. Doing so would transform the current historical analysis into a living analytical system capable of tracking ongoing transfer-market behavior.
+
+\section{Temporal and Dynamic Modeling}
+\label{sec:future_temporal}
+
+Although the present work includes season-based filtering and animated historical ranking views, the underlying algorithms are still applied to static snapshots of the graph. Future work could investigate genuinely dynamic graph models in which scores evolve continuously over time rather than being recomputed independently for each season.
+
+Such an approach would support more rigorous analysis of persistence, abrupt structural shifts, and long-term club trajectories. Dynamic centrality models could help distinguish temporary transfer surges from sustained institutional influence.
+
+\section{Scalability and System Improvements}
+\label{sec:future_system}
+
+From a systems perspective, the current implementation is well suited for experimentation and interactive exploration, but it could be extended to support larger datasets, multi-node Spark deployment, and more advanced caching or persistence strategies. Running the application over a true Spark cluster would enable more explicit study of scalability under larger graph sizes and heavier workloads.
+
+The frontend could also be enhanced with downloadable reports, figure export, ranking table export, and session saving. Such features would be especially useful for research, teaching, and demonstration purposes.
+
+\section{Analytical Validation}
+\label{sec:future_validation}
+
+Another important direction for future work is the addition of stronger quantitative validation. Future studies could compare algorithmic rankings with external football indicators such as club revenues, squad valuations, transfer spending, league standings, or European competition performance.
+
+This would provide a more formal basis for evaluating whether graph-based importance aligns with conventional indicators of sporting or financial strength. It could also clarify when the algorithms confirm expected hierarchies and when they reveal more subtle structural roles.
+
+\section{Generalization to Other Domains}
+\label{sec:future_domains}
+
+Finally, the framework developed in this thesis is not limited to football transfer networks. The same methodology could be applied to other directed weighted systems such as employee mobility networks, citation graphs, trade networks, supply chains, and online influence networks. Extending the framework to such domains would further demonstrate the general value of combining distributed graph processing with interactive comparative visualization.
+
+In this sense, the thesis can be viewed not only as a study of football transfers, but also as a reusable blueprint for comparing graph-ranking algorithms on real-world complex networks.
