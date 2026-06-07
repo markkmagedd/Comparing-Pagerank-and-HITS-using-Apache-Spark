@@ -358,6 +358,11 @@ INPUT chapters/background.tex
 INPUT /usr/local/texlive/2026basic/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm
 INPUT /usr/local/texlive/2026basic/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
 INPUT /usr/local/texlive/2026basic/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
+INPUT ./Figures/web_graph_concept.png
+INPUT ./Figures/web_graph_concept.png
+INPUT ./Figures/web_graph_concept.png
+INPUT ./Figures/web_graph_concept.png
+INPUT ./Figures/web_graph_concept.png
 INPUT /usr/local/texlive/2026basic/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/local/texlive/2026basic/texmf-dist/fonts/tfm/public/cm/cmbx8.tfm
 INPUT /usr/local/texlive/2026basic/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm
@@ -367,6 +372,11 @@ INPUT /usr/local/texlive/2026basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/
 INPUT /usr/local/texlive/2026basic/texmf-dist/fonts/tfm/public/cm/cmbsy10.tfm
 INPUT /usr/local/texlive/2026basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy8.tfm
 INPUT /usr/local/texlive/2026basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm
+INPUT ./Figures/pagerank_convergence.png
+INPUT ./Figures/pagerank_convergence.png
+INPUT ./Figures/pagerank_convergence.png
+INPUT ./Figures/pagerank_convergence.png
+INPUT ./Figures/pagerank_convergence.png
 INPUT /usr/local/texlive/2026basic/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 INPUT /usr/local/texlive/2026basic/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 INPUT /usr/local/texlive/2026basic/texmf-dist/tex/latex/psnfss/ot1pcr.fd
