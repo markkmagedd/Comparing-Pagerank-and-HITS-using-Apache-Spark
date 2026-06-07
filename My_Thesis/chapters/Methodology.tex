@@ -195,6 +195,15 @@ Architecturally, the system follows a layered design:
 
 This separation of concerns improves maintainability and supports experimentation because algorithmic changes can be introduced in the processing layer without restructuring the interface layer.
 
+To illustrate how data and requests flow through these layered components, Figure~\ref{fig:system_workflow} presents a step-by-step system architecture workflow diagram. The pipeline begins at the Data Layer, where the raw player transfer CSV file is lazily loaded and cached in memory. In the Processing Layer, PySpark handles pre-filtering and consolidated graph construction (including fallback fee mappings). The ranking algorithms (PageRank and HITS) run iteratively on these RDD structures, leveraging Spark broadcast variables to optimize network communication. The FastAPI service layer parses calculation requests using Pydantic, calls the Spark engine, and transforms the resulting RDD scores into structured JSON payloads. Finally, the Presentation Layer decodes this data in the browser to render interactive visualizations using D3.js, Cytoscape.js, and Chart.js.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/system_workflow.png}
+    \caption{Step-by-step system architecture workflow diagram of the Transfer Analyzer pipeline.}
+    \label{fig:system_workflow}
+\end{figure}
+
 
 %=============================================================
 \section{Transfer Analyzer Web Application}

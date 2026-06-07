@@ -47,15 +47,15 @@
 \contentsline {section}{\numberline {3.4}Implementation}{24}{section.3.4}%
 \contentsline {subsection}{\numberline {3.4.1}Technology Stack}{25}{subsection.3.4.1}%
 \contentsline {subsection}{\numberline {3.4.2}System Architecture}{25}{subsection.3.4.2}%
-\contentsline {section}{\numberline {3.5}Transfer Analyzer Web Application}{25}{section.3.5}%
+\contentsline {section}{\numberline {3.5}Transfer Analyzer Web Application}{26}{section.3.5}%
 \contentsline {subsection}{\numberline {3.5.1}Backend Processing Workflow}{26}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Frontend Analytical Views}{26}{subsection.3.5.2}%
-\contentsline {section}{\numberline {3.6}Configurable Parameters}{26}{section.3.6}%
-\contentsline {section}{\numberline {3.7}Algorithm Integration}{27}{section.3.7}%
-\contentsline {subsection}{\numberline {3.7.1}PageRank Integration}{27}{subsection.3.7.1}%
-\contentsline {subsection}{\numberline {3.7.2}HITS Integration}{27}{subsection.3.7.2}%
+\contentsline {subsection}{\numberline {3.5.2}Frontend Analytical Views}{27}{subsection.3.5.2}%
+\contentsline {section}{\numberline {3.6}Configurable Parameters}{27}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Algorithm Integration}{28}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}PageRank Integration}{28}{subsection.3.7.1}%
+\contentsline {subsection}{\numberline {3.7.2}HITS Integration}{28}{subsection.3.7.2}%
 \contentsline {subsection}{\numberline {3.7.3}Unified Comparison Logic}{28}{subsection.3.7.3}%
-\contentsline {section}{\numberline {3.8}Expected Analytical Outputs}{28}{section.3.8}%
+\contentsline {section}{\numberline {3.8}Expected Analytical Outputs}{29}{section.3.8}%
 \contentsline {chapter}{\numberline {4}Results}{30}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Experimental Setting and Dataset}{30}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Tools Used}{31}{section.4.2}%
@@ -91,4 +91,4 @@
 \contentsline {section}{\numberline {6.4}Scalability and System Improvements}{53}{section.6.4}%
 \contentsline {section}{\numberline {6.5}Analytical Validation}{53}{section.6.5}%
 \contentsline {section}{\numberline {6.6}Generalization to Other Domains}{53}{section.6.6}%
-\contentsline {chapter}{References}{55}{section*.46}%
+\contentsline {chapter}{References}{55}{section*.47}%
