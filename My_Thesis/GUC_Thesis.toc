@@ -1,8 +1,3 @@
-\contentsline {chapter}{Acknowledgments}{iii}{chapter*.1}%
-\contentsline {chapter}{List of Publications}{iv}{section*.2}%
-\contentsline {chapter}{List of Abbreviations}{ix}{section*.6}%
-\contentsline {chapter}{List of Figures}{x}{section*.8}%
-\contentsline {chapter}{List of Tables}{xi}{section*.10}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Motivation}{2}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Problem Statement}{2}{section.1.2}%
@@ -12,28 +7,28 @@
 \contentsline {section}{\numberline {2.1}Concepts Overview}{5}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Link Analysis and Web Graph Theory}{5}{subsection.2.1.1}%
 \contentsline {subsection}{\numberline {2.1.2}The PageRank Algorithm}{6}{subsection.2.1.2}%
-\contentsline {subsubsection}{The Random Surfer Model and Markov Chains}{6}{section*.12}%
-\contentsline {subsubsection}{Damping Factor and Eigenvector Computation}{6}{section*.13}%
-\contentsline {subsubsection}{Convergence and Complexity}{7}{section*.14}%
-\contentsline {subsubsection}{Limitations of the Classical Model}{7}{section*.15}%
+\contentsline {subsubsection}{The Random Surfer Model and Markov Chains}{6}{section*.11}%
+\contentsline {subsubsection}{Damping Factor and Eigenvector Computation}{6}{section*.12}%
+\contentsline {subsubsection}{Convergence and Complexity}{7}{section*.13}%
+\contentsline {subsubsection}{Limitations of the Classical Model}{7}{section*.14}%
 \contentsline {subsection}{\numberline {2.1.3}The HITS Algorithm}{7}{subsection.2.1.3}%
-\contentsline {subsubsection}{Mathematical Formulation of HITS}{8}{section*.16}%
-\contentsline {subsubsection}{Matrix Interpretation}{8}{section*.17}%
-\contentsline {subsubsection}{Operational Procedure}{9}{section*.18}%
+\contentsline {subsubsection}{Mathematical Formulation of HITS}{8}{section*.15}%
+\contentsline {subsubsection}{Matrix Interpretation}{8}{section*.16}%
+\contentsline {subsubsection}{Operational Procedure}{9}{section*.17}%
 \contentsline {subsection}{\numberline {2.1.4}Modified PageRank Variants}{9}{subsection.2.1.4}%
 \contentsline {subsection}{\numberline {2.1.5}Distributed Graph Processing}{10}{subsection.2.1.5}%
 \contentsline {subsection}{\numberline {2.1.6}Apache Spark and GraphX}{10}{subsection.2.1.6}%
 \contentsline {subsection}{\numberline {2.1.7}Complex Network Applications}{11}{subsection.2.1.7}%
-\contentsline {subsubsection}{Football Player Transfer Networks}{11}{section*.19}%
-\contentsline {subsubsection}{Employee Mobility Networks}{12}{section*.20}%
+\contentsline {subsubsection}{Football Player Transfer Networks}{11}{section*.18}%
+\contentsline {subsubsection}{Employee Mobility Networks}{12}{section*.19}%
 \contentsline {section}{\numberline {2.2}Literature Review}{12}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}PageRank: Origins and Evolution}{12}{subsection.2.2.1}%
 \contentsline {subsection}{\numberline {2.2.2}HITS: Hubs, Authorities, and Query-Dependent Analysis}{13}{subsection.2.2.2}%
 \contentsline {subsection}{\numberline {2.2.3}Comparative Studies of PageRank and HITS}{13}{subsection.2.2.3}%
 \contentsline {subsection}{\numberline {2.2.4}Distributed Implementations of Link Analysis}{14}{subsection.2.2.4}%
 \contentsline {subsection}{\numberline {2.2.5}Graph Analytics in Non-Web Domains}{15}{subsection.2.2.5}%
-\contentsline {subsubsection}{Football Transfer Networks}{15}{section*.21}%
-\contentsline {subsubsection}{Employee Mobility Networks}{15}{section*.22}%
+\contentsline {subsubsection}{Football Transfer Networks}{15}{section*.20}%
+\contentsline {subsubsection}{Employee Mobility Networks}{15}{section*.21}%
 \contentsline {section}{\numberline {2.3}Datasets}{15}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Evaluation Metrics}{16}{section.2.4}%
 \contentsline {section}{\numberline {2.5}Discussion}{17}{section.2.5}%
@@ -67,33 +62,33 @@
 \contentsline {section}{\numberline {4.3}Evaluation Dimensions}{30}{section.4.3}%
 \contentsline {section}{\numberline {4.4}PageRank and HITS Ranking Behavior}{31}{section.4.4}%
 \contentsline {subsection}{\numberline {4.4.1}Buyer-Oriented Analysis}{31}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Seller-Oriented Analysis}{32}{subsection.4.4.2}%
-\contentsline {section}{\numberline {4.5}Effect of Weighting Mode}{33}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Fee-Weighted Analysis}{33}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Count-Weighted Analysis}{34}{subsection.4.5.2}%
-\contentsline {section}{\numberline {4.6}Effect of League and Season Filters}{36}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}League-Specific Analysis}{36}{subsection.4.6.1}%
-\contentsline {subsection}{\numberline {4.6.2}Season-Range Analysis}{36}{subsection.4.6.2}%
-\contentsline {section}{\numberline {4.7}Visualization-Based Interpretation}{37}{section.4.7}%
-\contentsline {subsection}{\numberline {4.7.1}Bar Chart View}{37}{subsection.4.7.1}%
-\contentsline {subsection}{\numberline {4.7.2}Network Graph View}{37}{subsection.4.7.2}%
-\contentsline {subsection}{\numberline {4.7.3}League Flow View}{38}{subsection.4.7.3}%
-\contentsline {subsection}{\numberline {4.7.4}Compare Mode}{39}{subsection.4.7.4}%
-\contentsline {subsection}{\numberline {4.7.5}Historical Animated Bar Chart}{39}{subsection.4.7.5}%
-\contentsline {subsection}{\numberline {4.7.6}Case Study: FC Barcelona Across the Years}{40}{subsection.4.7.6}%
-\contentsline {section}{\numberline {4.8}Comparative Discussion of Findings}{41}{section.4.8}%
-\contentsline {section}{\numberline {4.9}Chapter Summary}{42}{section.4.9}%
-\contentsline {chapter}{\numberline {5}Conclusion}{43}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Summary of the Thesis}{43}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Main Contributions}{43}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Comparative Conclusions}{44}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Final Remarks}{44}{section.5.4}%
-\contentsline {chapter}{\numberline {6}Future Work}{46}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Algorithmic Extensions}{46}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Data Enrichment}{46}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Temporal and Dynamic Modeling}{47}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Scalability and System Improvements}{47}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Analytical Validation}{47}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Generalization to Other Domains}{47}{section.6.6}%
-\contentsline {chapter}{Appendix}{49}{section*.38}%
-\contentsline {chapter}{References}{50}{section*.39}%
+\contentsline {subsection}{\numberline {4.4.2}Seller-Oriented Analysis}{33}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}Effect of Weighting Mode}{35}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Fee-Weighted Analysis}{35}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Count-Weighted Analysis}{36}{subsection.4.5.2}%
+\contentsline {section}{\numberline {4.6}Effect of League and Season Filters}{40}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}League-Specific Analysis}{40}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Season-Range Analysis}{40}{subsection.4.6.2}%
+\contentsline {section}{\numberline {4.7}Visualization-Based Interpretation}{41}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}Bar Chart View}{41}{subsection.4.7.1}%
+\contentsline {subsection}{\numberline {4.7.2}Network Graph View}{42}{subsection.4.7.2}%
+\contentsline {subsection}{\numberline {4.7.3}League Flow View (Chord Diagram)}{42}{subsection.4.7.3}%
+\contentsline {subsection}{\numberline {4.7.4}Compare Mode}{43}{subsection.4.7.4}%
+\contentsline {subsection}{\numberline {4.7.5}Historical Animated Bar Chart}{44}{subsection.4.7.5}%
+\contentsline {subsection}{\numberline {4.7.6}Transfer Details Panel}{44}{subsection.4.7.6}%
+\contentsline {subsection}{\numberline {4.7.7}Case Study: FC Barcelona Across the Years}{45}{subsection.4.7.7}%
+\contentsline {section}{\numberline {4.8}Comparative Discussion of Findings}{46}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Chapter Summary}{47}{section.4.9}%
+\contentsline {chapter}{\numberline {5}Conclusion}{48}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Summary of the Thesis}{48}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Main Contributions}{48}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Comparative Conclusions}{49}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Final Remarks}{49}{section.5.4}%
+\contentsline {chapter}{\numberline {6}Future Work}{51}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Algorithmic Extensions}{51}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Data Enrichment}{51}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Temporal and Dynamic Modeling}{52}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Scalability and System Improvements}{52}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Analytical Validation}{52}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Generalization to Other Domains}{52}{section.6.6}%
+\contentsline {chapter}{References}{54}{section*.46}%

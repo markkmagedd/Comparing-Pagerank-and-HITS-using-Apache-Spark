@@ -75,55 +75,80 @@ def run_hits(edges_rdd, iterations=10):
     """
     Executes the HITS algorithm on an RDD of (source, (destination, weight)).
     Returns a tuple of (authorities, hubs) RDDs.
+    
+    Uses a broadcast-based approach to avoid the shuffle explosion that
+    occurs with repeated RDD joins in a loop.
     """
+    sc = edges_rdd.context
+    
+    # Build adjacency lists once and cache them
     # forward_links: (source, [(dest, weight), ...])
     # reverse_links: (dest, [(source, weight), ...])
     forward_links = edges_rdd.groupByKey().mapValues(list).cache()
-    reverse_links = edges_rdd.map(lambda x: (x[1][0], (x[0], x[1][1]))).groupByKey().mapValues(list).cache()
+    reverse_links = edges_rdd.map(
+        lambda x: (x[1][0], (x[0], x[1][1]))
+    ).groupByKey().mapValues(list).cache()
     
-    # Initialize all nodes with score 1.0
-    nodes = edges_rdd.flatMap(lambda x: [x[0], x[1][0]]).distinct().cache()
-    hubs = nodes.map(lambda x: (x, 1.0))
-    authorities = nodes.map(lambda x: (x, 1.0))
+    # Force materialization of cached adjacency lists
+    forward_links.count()
+    reverse_links.count()
+    
+    # Collect all node IDs
+    all_nodes = edges_rdd.flatMap(lambda x: [x[0], x[1][0]]).distinct().collect()
+    
+    # Initialize scores as simple dicts
+    hub_scores = {node: 1.0 for node in all_nodes}
+    auth_scores = {node: 1.0 for node in all_nodes}
     
     for i in range(iterations):
-        # Authority update: a(u) = sum(h(v) * w(v->u))
-        # Join reverse_links (dest, [sources]) with hubs (v, h_v)
-        # Result of join: (v, ([destinations], h_v))
-        # We need (u, a_u). reverse_links is (u, [(v, w)]) where v->u.
-        # So we join reverse_links with hubs on v.
-        # reverse_links: (u, [(v, w)]) -> map to (v, (u, w))
-        # then join with hubs(v, h_v) -> (v, ((u, w), h_v)) -> (u, h_v * w)
-        authorities = reverse_links.flatMap(lambda x: [(v, (x[0], w)) for (v, w) in x[1]]) \
-            .join(hubs) \
-            .map(lambda x: (x[1][0][0], x[1][0][1] * x[1][1])) \
-            .reduceByKey(add)
-            
+        # --- Authority update: a(u) = sum(h(v) * w(v->u)) for all v pointing to u ---
+        # Broadcast current hub scores
+        hub_bc = sc.broadcast(hub_scores)
+        
+        # For each (dest, [(src, w), ...]) compute new authority score
+        new_auth = reverse_links.mapValues(
+            lambda neighbors: sum(hub_bc.value.get(src, 0.0) * w for src, w in neighbors)
+        ).collect()
+        
+        hub_bc.destroy()
+        
         # Normalize authorities (L2 norm)
-        if authorities.isEmpty():
-            break
-        a_sq_sum = authorities.map(lambda x: x[1]**2).reduce(add)
+        a_sq_sum = sum(score ** 2 for _, score in new_auth)
         a_norm = math.sqrt(a_sq_sum)
         if a_norm > 0:
-            authorities = authorities.mapValues(lambda x: x / a_norm).cache()
-            
-        # Hub update: h(u) = sum(a(v) * w(u->v))
-        # Join forward_links (source, [dests]) with authorities (v, a_v)
-        # forward_links: (u, [(v, w)]) -> map to (v, (u, w)) where u->v
-        hubs = forward_links.flatMap(lambda x: [(v, (x[0], w)) for (v, w) in x[1]]) \
-            .join(authorities) \
-            .map(lambda x: (x[1][0][0], x[1][0][1] * x[1][1])) \
-            .reduceByKey(add)
-            
+            auth_scores = {node: score / a_norm for node, score in new_auth}
+        else:
+            auth_scores = {node: score for node, score in new_auth}
+        
+        # --- Hub update: h(u) = sum(a(v) * w(u->v)) for all v that u points to ---
+        # Broadcast current authority scores
+        auth_bc = sc.broadcast(auth_scores)
+        
+        # For each (source, [(dest, w), ...]) compute new hub score
+        new_hubs = forward_links.mapValues(
+            lambda neighbors: sum(auth_bc.value.get(dest, 0.0) * w for dest, w in neighbors)
+        ).collect()
+        
+        auth_bc.destroy()
+        
         # Normalize hubs (L2 norm)
-        if hubs.isEmpty():
-            break
-        h_sq_sum = hubs.map(lambda x: x[1]**2).reduce(add)
+        h_sq_sum = sum(score ** 2 for _, score in new_hubs)
         h_norm = math.sqrt(h_sq_sum)
         if h_norm > 0:
-            hubs = hubs.mapValues(lambda x: x / h_norm).cache()
-            
+            hub_scores = {node: score / h_norm for node, score in new_hubs}
+        else:
+            hub_scores = {node: score for node, score in new_hubs}
+    
+    # Convert final dicts back to RDDs for compatibility with the rest of the code
+    authorities = sc.parallelize(list(auth_scores.items()))
+    hubs = sc.parallelize(list(hub_scores.items()))
+    
+    # Unpersist adjacency lists
+    forward_links.unpersist()
+    reverse_links.unpersist()
+    
     return authorities, hubs
+
 def get_available_leagues(sc, file_path="transfers.csv"):
     """
     Parses the CSV data and returns a sorted list of unique league names.

@@ -26,7 +26,8 @@ async def lifespan(app: FastAPI):
     preload_data(spark.sparkContext, "transfers.csv")
     
     yield
-    if spark:
+    import sys
+    if spark and "pytest" not in sys.modules:
         spark.stop()
 
 app = FastAPI(title="PageRank Transfer Visualizer", lifespan=lifespan)
