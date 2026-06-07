@@ -7,28 +7,28 @@
 \contentsline {section}{\numberline {2.1}Concepts Overview}{5}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Link Analysis and Web Graph Theory}{5}{subsection.2.1.1}%
 \contentsline {subsection}{\numberline {2.1.2}The PageRank Algorithm}{6}{subsection.2.1.2}%
-\contentsline {subsubsection}{The Random Surfer Model and Markov Chains}{6}{section*.12}%
-\contentsline {subsubsection}{Damping Factor and Eigenvector Computation}{7}{section*.13}%
-\contentsline {subsubsection}{Convergence and Complexity}{7}{section*.14}%
-\contentsline {subsubsection}{Limitations of the Classical Model}{8}{section*.16}%
+\contentsline {subsubsection}{The Random Surfer Model and Markov Chains}{6}{section*.10}%
+\contentsline {subsubsection}{Damping Factor and Eigenvector Computation}{7}{section*.11}%
+\contentsline {subsubsection}{Convergence and Complexity}{7}{section*.12}%
+\contentsline {subsubsection}{Limitations of the Classical Model}{8}{section*.14}%
 \contentsline {subsection}{\numberline {2.1.3}The HITS Algorithm}{9}{subsection.2.1.3}%
-\contentsline {subsubsection}{Mathematical Formulation of HITS}{9}{section*.17}%
-\contentsline {subsubsection}{Matrix Interpretation}{10}{section*.18}%
-\contentsline {subsubsection}{Operational Procedure}{10}{section*.19}%
+\contentsline {subsubsection}{Mathematical Formulation of HITS}{9}{section*.15}%
+\contentsline {subsubsection}{Matrix Interpretation}{10}{section*.16}%
+\contentsline {subsubsection}{Operational Procedure}{10}{section*.17}%
 \contentsline {subsection}{\numberline {2.1.4}Modified PageRank Variants}{10}{subsection.2.1.4}%
 \contentsline {subsection}{\numberline {2.1.5}Distributed Graph Processing}{11}{subsection.2.1.5}%
 \contentsline {subsection}{\numberline {2.1.6}Apache Spark and GraphX}{11}{subsection.2.1.6}%
 \contentsline {subsection}{\numberline {2.1.7}Complex Network Applications}{12}{subsection.2.1.7}%
-\contentsline {subsubsection}{Football Player Transfer Networks}{12}{section*.20}%
-\contentsline {subsubsection}{Employee Mobility Networks}{13}{section*.21}%
+\contentsline {subsubsection}{Football Player Transfer Networks}{12}{section*.18}%
+\contentsline {subsubsection}{Employee Mobility Networks}{13}{section*.19}%
 \contentsline {section}{\numberline {2.2}Literature Review}{14}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}PageRank: Origins and Evolution}{14}{subsection.2.2.1}%
 \contentsline {subsection}{\numberline {2.2.2}HITS: Hubs, Authorities, and Query-Dependent Analysis}{14}{subsection.2.2.2}%
 \contentsline {subsection}{\numberline {2.2.3}Comparative Studies of PageRank and HITS}{15}{subsection.2.2.3}%
 \contentsline {subsection}{\numberline {2.2.4}Distributed Implementations of Link Analysis}{16}{subsection.2.2.4}%
 \contentsline {subsection}{\numberline {2.2.5}Graph Analytics in Non-Web Domains}{16}{subsection.2.2.5}%
-\contentsline {subsubsection}{Football Transfer Networks}{16}{section*.22}%
-\contentsline {subsubsection}{Employee Mobility Networks}{17}{section*.23}%
+\contentsline {subsubsection}{Football Transfer Networks}{16}{section*.20}%
+\contentsline {subsubsection}{Employee Mobility Networks}{17}{section*.21}%
 \contentsline {section}{\numberline {2.3}Datasets}{17}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Evaluation Metrics}{18}{section.2.4}%
 \contentsline {section}{\numberline {2.5}Discussion}{18}{section.2.5}%
@@ -91,4 +91,4 @@
 \contentsline {section}{\numberline {6.4}Scalability and System Improvements}{53}{section.6.4}%
 \contentsline {section}{\numberline {6.5}Analytical Validation}{53}{section.6.5}%
 \contentsline {section}{\numberline {6.6}Generalization to Other Domains}{53}{section.6.6}%
-\contentsline {chapter}{References}{55}{section*.48}%
+\contentsline {chapter}{References}{55}{section*.46}%
