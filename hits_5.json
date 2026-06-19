@@ -1,0 +1,32 @@
+[
+  {
+    "club_id": "Lazio",
+    "club_name": "Lazio",
+    "score": 0.870701,
+    "rank": 1
+  },
+  {
+    "club_id": "FC Barcelona",
+    "club_name": "FC Barcelona",
+    "score": 0.338964,
+    "rank": 2
+  },
+  {
+    "club_id": "Real Madrid",
+    "club_name": "Real Madrid",
+    "score": 0.316292,
+    "rank": 3
+  },
+  {
+    "club_id": "Chelsea",
+    "club_name": "Chelsea",
+    "score": 0.11665,
+    "rank": 4
+  },
+  {
+    "club_id": "Inter",
+    "club_name": "Inter",
+    "score": 0.099437,
+    "rank": 5
+  }
+]

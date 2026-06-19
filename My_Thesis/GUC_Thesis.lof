@@ -5,19 +5,23 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Step-by-step system architecture workflow diagram of the Transfer Analyzer pipeline.}}{26}{figure.caption.23}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Application view for Top 10 Buyers PageRank (Fee Weighted)}}{32}{figure.caption.24}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Application view for Top 10 Authority Buyers HITS (Fee Weighted)}}{33}{figure.caption.26}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Application view for Top 10 Sellers PageRank (Fee Weighted)}}{35}{figure.caption.28}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Application view for Top 10 Hubs Sellers HITS (Fee Weighted)}}{36}{figure.caption.30}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Application view for Top 10 Buyers PageRank (Count Weighted)}}{37}{figure.caption.32}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Application view for Top 10 Authority Buyers HITS (Count Weighted)}}{38}{figure.caption.34}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Application view for Top 10 Sellers PageRank (Count Weighted)}}{39}{figure.caption.36}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Application view for Top 10 Hubs Sellers HITS (Count Weighted)}}{40}{figure.caption.38}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Interactive Bar Chart View displaying top-ranked clubs.}}{42}{figure.caption.40}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Network Graph View showing transfer relations between top clubs.}}{43}{figure.caption.41}%
-\contentsline {figure}{\numberline {4.11}{\ignorespaces League Flow View illustrating transfer volume between leagues.}}{44}{figure.caption.42}%
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Compare Mode displaying PageRank and HITS results side-by-side.}}{44}{figure.caption.43}%
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Historical Animated Bar Chart tracking rankings across seasons.}}{45}{figure.caption.44}%
-\contentsline {figure}{\numberline {4.14}{\ignorespaces Transfer Details Panel displaying individual transfer records for a selected club.}}{46}{figure.caption.45}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Application view for Top 10 Buyers PageRank (Fee Weighted)}}{33}{figure.caption.24}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Application view for Top 10 Authority Buyers HITS (Fee Weighted)}}{34}{figure.caption.25}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Application view for Top 10 Sellers PageRank (Fee Weighted)}}{35}{figure.caption.26}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Application view for Top 10 Hubs Sellers HITS (Fee Weighted)}}{36}{figure.caption.27}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Application view for Top 10 Buyers PageRank (Count Weighted)}}{38}{figure.caption.28}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Application view for Top 10 Authority Buyers HITS (Count Weighted)}}{39}{figure.caption.29}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Application view for Top 10 Sellers PageRank (Count Weighted)}}{40}{figure.caption.30}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Application view for Top 10 Hubs Sellers HITS (Count Weighted)}}{41}{figure.caption.31}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Interactive Bar Chart View displaying top-ranked clubs.}}{43}{figure.caption.32}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Network Graph View showing transfer relations between top clubs.}}{44}{figure.caption.33}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces League Flow View illustrating transfer volume between leagues.}}{45}{figure.caption.34}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Compare Mode displaying PageRank and HITS results side-by-side.}}{46}{figure.caption.35}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Historical Animated Bar Chart tracking rankings across seasons.}}{47}{figure.caption.36}%
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Transfer Details Panel displaying individual transfer records for a selected club.}}{48}{figure.caption.37}%
+\contentsline {figure}{\numberline {4.15}{\ignorespaces FC Barcelona's strong position in the 2008-2009 season.}}{49}{figure.caption.38}%
+\contentsline {figure}{\numberline {4.16}{\ignorespaces FC Barcelona reaching 1st place in PageRank during the 2014-2015 season.}}{49}{figure.caption.39}%
+\contentsline {figure}{\numberline {4.17}{\ignorespaces FC Barcelona's ranking behavior in the 2015-2016 season.}}{50}{figure.caption.40}%
+\contentsline {figure}{\numberline {4.18}{\ignorespaces FC Barcelona's ranking in the 2010-2011 season.}}{51}{figure.caption.41}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

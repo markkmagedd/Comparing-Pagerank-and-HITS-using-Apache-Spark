@@ -206,15 +206,25 @@
         /* ── Year watermark ── */
         .year-watermark {
             position: absolute;
-            bottom: 20px;
-            right: 30px;
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(5rem, 10vw, 9rem);
+            bottom: 40px;
+            right: 40px;
+            font-size: 8rem;
             font-weight: 900;
             color: rgba(255, 255, 255, 0.03);
             pointer-events: none;
-            z-index: 1;
-            line-height: 1;
+            z-index: 0;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .algo-watermark {
+            position: absolute;
+            bottom: 180px;
+            right: 40px;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.02);
+            pointer-events: none;
+            z-index: 0;
             letter-spacing: -0.04em;
             transition: opacity 0.3s;
             user-select: none;
@@ -460,6 +470,14 @@
                 <span class="control-label">Algorithm</span>
                 <select id="algo-select" class="control-select">
                     <option value="pagerank" selected>PageRank</option>
+                    <option value="hits">HITS Authority</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <span class="control-label">Jump To</span>
+                <select id="year-select" class="control-select">
+                    <option value="" disabled selected>Loading...</option>
                 </select>
             </div>
 
@@ -480,6 +498,7 @@
 
             <div class="chart-area" id="chart-area">
                 <div class="year-watermark" id="year-watermark"></div>
+                <div class="algo-watermark" id="algo-watermark">PageRank</div>
                 <!-- SVG injected by JS -->
             </div>
 
@@ -511,6 +530,6 @@
     </div>
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="/static/js/historical_bar_chart.js?v=20260607"></script>
+    <script src="/static/js/historical_bar_chart.js?v=20260607_v5"></script>
 </body>
 </html>

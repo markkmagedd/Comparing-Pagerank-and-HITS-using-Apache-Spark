@@ -10,7 +10,6 @@ Sergey Brin and Lawrence Page.
 Lawrence Page, Sergey Brin, Rajeev Motwani, and Terry Winograd.
 \newblock The {PageRank} citation ranking: Bringing order to the web.
 \newblock Technical Report 1999-66, Stanford InfoLab, 1999.
-\newblock Available at \url{http://ilpubs.stanford.edu:8090/422/1/1999-66.pdf}.
 
 \bibitem{kleinberg1999hits}
 Jon~M. Kleinberg.
@@ -23,7 +22,7 @@ Xiao-Fan Liu, Yi-Lu Liu, Xiao-He Lu, Qin-Xia Wang, and Tian-Xiang Wang.
   functionalities versus network properties.
 \newblock {\em PLoS ONE}, 11(6):e0156504, 2016.
 \newblock Available at
-  \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4892674/}.
+  \url{https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0156504}.
 
 \bibitem{ieice2016football}
 Guannan Xu and Tsuyoshi Murata.
@@ -34,8 +33,7 @@ Guannan Xu and Tsuyoshi Murata.
 \bibitem{employee_arxiv}
 Omar~A. Guerrero and Robert~L. Axtell.
 \newblock Employment growth through labor flow networks.
-\newblock arXiv preprint arXiv:1310.2642, 2013.
-\newblock Available at \url{https://arxiv.org/abs/1310.2642}.
+\newblock {\em PLoS ONE}, 8(5):e60808, 2013.
 
 \bibitem{spark_graphx}
 Joseph~E. Gonzalez, Reynold~S. Xin, Ankur Dave, Daniel Crankshaw, Michael~J.
@@ -74,9 +72,9 @@ Priya Sharma and Rahul Gupta.
   186(1):12--20, 2024.
 
 \bibitem{mdpi_gluing}
-L{\'a}szl{\'o} Csat{\'o} and Csaba~D. T{\'o}th.
-\newblock {PageRank} on gluing networks.
-\newblock {\em Mathematics (MDPI)}, 9(15):1773, 2021.
+Xuqian~Ben Han, Shihao Wang, and Chenglong Yu.
+\newblock {PageRank} of gluing networks and corresponding markov chains.
+\newblock {\em Mathematics}, 13(13):2080, 2025.
 
 \bibitem{cornell_limitations}
 {Cornell University, Department of Computer Science}.
@@ -161,6 +159,6 @@ Jesper Bagger and Rasmus Lentz.
 Jing Gong and Yi~Li.
 \newblock Network analysis of football transfer market.
 \newblock ResearchGate, 2020.
-\newblock Available at \url{https://www.researchgate.net/}.
+\newblock Available online.
 
 \end{thebibliography}

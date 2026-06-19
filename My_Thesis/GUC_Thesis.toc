@@ -49,10 +49,10 @@
 \contentsline {subsection}{\numberline {3.4.2}System Architecture}{25}{subsection.3.4.2}%
 \contentsline {section}{\numberline {3.5}Transfer Analyzer Web Application}{26}{section.3.5}%
 \contentsline {subsection}{\numberline {3.5.1}Backend Processing Workflow}{26}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Frontend Analytical Views}{27}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.2}Frontend Analytical Views}{26}{subsection.3.5.2}%
 \contentsline {section}{\numberline {3.6}Configurable Parameters}{27}{section.3.6}%
-\contentsline {section}{\numberline {3.7}Algorithm Integration}{28}{section.3.7}%
-\contentsline {subsection}{\numberline {3.7.1}PageRank Integration}{28}{subsection.3.7.1}%
+\contentsline {section}{\numberline {3.7}Algorithm Integration}{27}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}PageRank Integration}{27}{subsection.3.7.1}%
 \contentsline {subsection}{\numberline {3.7.2}HITS Integration}{28}{subsection.3.7.2}%
 \contentsline {subsection}{\numberline {3.7.3}Unified Comparison Logic}{28}{subsection.3.7.3}%
 \contentsline {section}{\numberline {3.8}Expected Analytical Outputs}{29}{section.3.8}%
@@ -64,31 +64,31 @@
 \contentsline {subsection}{\numberline {4.4.1}Buyer-Oriented Analysis}{32}{subsection.4.4.1}%
 \contentsline {subsection}{\numberline {4.4.2}Seller-Oriented Analysis}{34}{subsection.4.4.2}%
 \contentsline {section}{\numberline {4.5}Effect of Weighting Mode}{36}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Fee-Weighted Analysis}{36}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.1}Fee-Weighted Analysis}{37}{subsection.4.5.1}%
 \contentsline {subsection}{\numberline {4.5.2}Count-Weighted Analysis}{37}{subsection.4.5.2}%
-\contentsline {section}{\numberline {4.6}Effect of League and Season Filters}{41}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}League-Specific Analysis}{41}{subsection.4.6.1}%
-\contentsline {subsection}{\numberline {4.6.2}Season-Range Analysis}{41}{subsection.4.6.2}%
+\contentsline {section}{\numberline {4.6}Effect of League and Season Filters}{42}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}League-Specific Analysis}{42}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Season-Range Analysis}{42}{subsection.4.6.2}%
 \contentsline {section}{\numberline {4.7}Visualization-Based Interpretation}{42}{section.4.7}%
 \contentsline {subsection}{\numberline {4.7.1}Bar Chart View}{42}{subsection.4.7.1}%
 \contentsline {subsection}{\numberline {4.7.2}Network Graph View}{43}{subsection.4.7.2}%
-\contentsline {subsection}{\numberline {4.7.3}League Flow View (Chord Diagram)}{43}{subsection.4.7.3}%
-\contentsline {subsection}{\numberline {4.7.4}Compare Mode}{44}{subsection.4.7.4}%
-\contentsline {subsection}{\numberline {4.7.5}Historical Animated Bar Chart}{45}{subsection.4.7.5}%
-\contentsline {subsection}{\numberline {4.7.6}Transfer Details Panel}{45}{subsection.4.7.6}%
-\contentsline {subsection}{\numberline {4.7.7}Case Study: FC Barcelona Across the Years}{46}{subsection.4.7.7}%
-\contentsline {section}{\numberline {4.8}Comparative Discussion of Findings}{47}{section.4.8}%
-\contentsline {section}{\numberline {4.9}Chapter Summary}{48}{section.4.9}%
-\contentsline {chapter}{\numberline {5}Conclusion}{49}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Summary of the Thesis}{49}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Main Contributions}{49}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Comparative Conclusions}{50}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Final Remarks}{50}{section.5.4}%
-\contentsline {chapter}{\numberline {6}Future Work}{52}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Algorithmic Extensions}{52}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Data Enrichment}{52}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Temporal and Dynamic Modeling}{53}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Scalability and System Improvements}{53}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Analytical Validation}{53}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Generalization to Other Domains}{53}{section.6.6}%
-\contentsline {chapter}{References}{55}{section*.47}%
+\contentsline {subsection}{\numberline {4.7.3}League Flow View (Chord Diagram)}{44}{subsection.4.7.3}%
+\contentsline {subsection}{\numberline {4.7.4}Compare Mode}{45}{subsection.4.7.4}%
+\contentsline {subsection}{\numberline {4.7.5}Historical Animated Bar Chart}{46}{subsection.4.7.5}%
+\contentsline {subsection}{\numberline {4.7.6}Transfer Details Panel}{47}{subsection.4.7.6}%
+\contentsline {subsection}{\numberline {4.7.7}Case Study: FC Barcelona Across the Years}{48}{subsection.4.7.7}%
+\contentsline {section}{\numberline {4.8}Comparative Discussion of Findings}{52}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Chapter Summary}{52}{section.4.9}%
+\contentsline {chapter}{\numberline {5}Conclusion}{53}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Summary of the Thesis}{53}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Main Contributions}{53}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Comparative Conclusions}{54}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Final Remarks}{54}{section.5.4}%
+\contentsline {chapter}{\numberline {6}Future Work}{56}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Algorithmic Extensions}{56}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Data Enrichment}{56}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Temporal and Dynamic Modeling}{57}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Scalability and System Improvements}{57}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Analytical Validation}{57}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Generalization to Other Domains}{57}{section.6.6}%
+\contentsline {chapter}{References}{59}{section*.43}%

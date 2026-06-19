@@ -50,6 +50,7 @@
         .paddingOuter(0.08);
 
     // ── State ──
+    let timelines = { pagerank: null, hits: null };
     let timeline = [];
     let yearIdx = 0;
     let playing = false;
@@ -62,8 +63,11 @@
     const btnPlayLabel  = btnPlay.querySelector("span");
     const btnPlayIcon   = btnPlay.querySelector("svg");
     const speedSel      = document.getElementById("speed-select");
+    const algoSel       = document.getElementById("algo-select");
+    const yearSel       = document.getElementById("year-select");
     const seasonBadge   = document.getElementById("season-badge");
     const yearWatermark = document.getElementById("year-watermark");
+    const algoWatermark = document.getElementById("algo-watermark");
     const progressFill  = document.getElementById("progress-fill");
     const loadingOverlay = document.getElementById("loading-overlay");
 
@@ -84,74 +88,163 @@
     const loadingBarFill = document.getElementById("loading-bar-fill");
     const loadingLabel   = document.getElementById("loading-text");
 
-    let fakeProgress = 0;
-    let progressInterval = null;
+    let currentProgress = 0;
+    let loadAnimFrame = null;
+    let loadStartTime = 0;
+    let dataReceived = false;
+    // Expected load time in ms — starts at 12s, then learns from real measurements
+    let expectedDuration = 12000;
 
     function setProgress(pct, label) {
-        fakeProgress = Math.min(100, Math.round(pct));
-        loadingPercent.innerHTML = `${fakeProgress}<span class="pct-sign">%</span>`;
-        loadingBarFill.style.width = `${fakeProgress}%`;
+        currentProgress = Math.min(100, pct);
+        const rounded = Math.round(currentProgress);
+        loadingPercent.innerHTML = `${rounded}<span class="pct-sign">%</span>`;
+        loadingBarFill.style.width = `${currentProgress}%`;
         if (label) loadingLabel.textContent = label;
     }
 
-    function startFakeProgress() {
-        fakeProgress = 0;
-        setProgress(0, "Initializing Spark…");
+    function formatTimeEstimate(ms) {
+        const secs = Math.max(1, Math.ceil(ms / 1000));
+        if (secs >= 60) {
+            const m = Math.floor(secs / 60);
+            const s = secs % 60;
+            return s > 0 ? `~${m}m ${s}s remaining` : `~${m}m remaining`;
+        }
+        return `~${secs}s remaining`;
+    }
 
-        progressInterval = setInterval(() => {
-            if (fakeProgress < 25) {
-                // Phase 1: Fast ramp to ~25% (Spark starting)
-                fakeProgress += 2 + Math.random() * 3;
-                setProgress(fakeProgress, "Initializing Spark…");
-            } else if (fakeProgress < 55) {
-                // Phase 2: Medium speed to ~55% (loading data)
-                fakeProgress += 0.8 + Math.random() * 1.5;
-                setProgress(fakeProgress, "Loading transfer data…");
-            } else if (fakeProgress < 85) {
-                // Phase 3: Slow crawl to ~85% (computing rankings)
-                fakeProgress += 0.3 + Math.random() * 0.6;
-                setProgress(fakeProgress, "Computing yearly rankings…");
+    let forcePhaseText = null;
+
+    function getPhaseLabel(pct) {
+        if (forcePhaseText) return forcePhaseText;
+        if (pct < 15) return "Initializing Spark engine";
+        if (pct < 35) return "Loading transfer dataset";
+        if (pct < 60) return "Building season graphs";
+        if (pct < 80) return "Computing yearly rankings";
+        if (pct < 95) return "Finalizing results";
+        return "Almost done";
+    }
+
+    function startSmoothProgress() {
+        dataReceived = false;
+        currentProgress = 0;
+        loadStartTime = performance.now();
+        setProgress(0, "Initializing Spark engine — estimating time…");
+
+        function tick() {
+            const elapsed = performance.now() - loadStartTime;
+
+            if (dataReceived) {
+                // Data arrived — race smoothly to 100%
+                currentProgress += (100 - currentProgress) * 0.18;
+                if (currentProgress >= 99.5) {
+                    setProgress(100, "Done!");
+                    return; // stop the loop, finishProgress callback handles the rest
+                }
+                setProgress(currentProgress, "Done!");
+                loadAnimFrame = requestAnimationFrame(tick);
+                return;
             }
-            // Stop at 85% — the real completion will jump to 100%
-            if (fakeProgress >= 85) {
-                clearInterval(progressInterval);
-                progressInterval = null;
-            }
-        }, 150);
+
+            // Smooth asymptotic curve: approaches 95% over expectedDuration
+            // Formula: progress = 95 * (1 - e^(-2.5 * t / expected))
+            const ratio = elapsed / expectedDuration;
+            const target = 95 * (1 - Math.exp(-2.5 * ratio));
+            // Ease toward target smoothly
+            currentProgress += (target - currentProgress) * 0.08;
+
+            const phase = getPhaseLabel(currentProgress);
+            const estimatedRemaining = Math.max(0, expectedDuration - elapsed);
+            const timeStr = formatTimeEstimate(estimatedRemaining);
+            setProgress(currentProgress, `${phase} — ${timeStr}`);
+
+            loadAnimFrame = requestAnimationFrame(tick);
+        }
+
+        loadAnimFrame = requestAnimationFrame(tick);
+    }
+
+    function stopProgressLoop() {
+        if (loadAnimFrame) {
+            cancelAnimationFrame(loadAnimFrame);
+            loadAnimFrame = null;
+        }
     }
 
     function finishProgress(cb) {
-        if (progressInterval) { clearInterval(progressInterval); progressInterval = null; }
-        setProgress(100, "Done!");
-        setTimeout(cb, 400);  // brief pause at 100% before hiding
+        const elapsed = performance.now() - loadStartTime;
+        // Learn from this load: blend toward actual duration for next time
+        expectedDuration = Math.round(expectedDuration * 0.4 + elapsed * 0.6);
+        dataReceived = true;
+        // Let the tick() loop race to 100%, then fire callback
+        setTimeout(() => {
+            stopProgressLoop();
+            setProgress(100, "Done!");
+            setTimeout(cb, 350);
+        }, 500);
     }
 
     // ── Fetch timeline data ──
-    async function fetchData() {
-        startFakeProgress();
+    async function preloadAllData() {
+        stopProgressLoop();
+        expectedDuration = 24000; // Double expected time for 2 algorithms
+        startSmoothProgress();
+        loadingOverlay.classList.remove("is-hidden");
+        
         try {
-            const res = await fetch("/api/rankings/historical?algorithm=pagerank&top_n=" + N);
-            const json = await res.json();
-            if (json.status === "success" && json.data.timeline.length) {
-                timeline = json.data.timeline;
-
+            // Fetch PageRank
+            forcePhaseText = "Computing PageRank models (1/2)";
+            const resPR = await fetch("/api/rankings/historical?algorithm=pagerank&top_n=" + N, { cache: "no-store" });
+            const jsonPR = await resPR.json();
+            
+            // Fetch HITS
+            forcePhaseText = "Computing HITS Authority models (2/2)";
+            const resHITS = await fetch("/api/rankings/historical?algorithm=hits&top_n=" + N, { cache: "no-store" });
+            const jsonHITS = await resHITS.json();
+            
+            forcePhaseText = "Finalizing results";
+            
+            if (jsonPR.status === "success" && jsonHITS.status === "success" && 
+                jsonPR.data.timeline.length && jsonHITS.data.timeline.length) {
+                
+                timelines.pagerank = jsonPR.data.timeline;
+                timelines.hits = jsonHITS.data.timeline;
+                
                 // Pre-assign colors for ALL clubs across ALL years so they're stable
-                timeline.forEach(frame => {
-                    frame.clubs.forEach(c => clubColor(c.club_name));
+                [timelines.pagerank, timelines.hits].forEach(tl => {
+                    tl.forEach(frame => {
+                        frame.clubs.forEach(c => clubColor(c.club_name));
+                    });
                 });
+
+                const algo = algoSel ? algoSel.value : "pagerank";
+                timeline = timelines[algo];
+
+                if (yearSel) {
+                    yearSel.innerHTML = "";
+                    timeline.forEach((frame, i) => {
+                        const opt = document.createElement("option");
+                        opt.value = i;
+                        opt.textContent = frame.season;
+                        yearSel.appendChild(opt);
+                    });
+                    yearSel.value = 0;
+                }
 
                 finishProgress(() => {
                     loadingOverlay.classList.add("is-hidden");
                     renderFrame(timeline[0], false);
                     updateProgress();
+                    // Automatically start playing when data is loaded
+                    if (!playing) play();
                 });
             } else {
-                if (progressInterval) { clearInterval(progressInterval); }
+                stopProgressLoop();
                 setProgress(100, "No data available.");
             }
         } catch (e) {
             console.error("Fetch failed:", e);
-            if (progressInterval) { clearInterval(progressInterval); }
+            stopProgressLoop();
             setProgress(0, "Error — please refresh.");
         }
     }
@@ -164,6 +257,13 @@
         // Update displays
         seasonBadge.textContent = currentSeason;
         yearWatermark.textContent = currentSeason;
+        if (yearSel && yearSel.value !== String(yearIdx)) {
+            yearSel.value = yearIdx;
+        }
+        
+        if (algoWatermark && algoSel) {
+            algoWatermark.textContent = algoSel.options[algoSel.selectedIndex].text;
+        }
 
         // Scales
         const maxScore = d3.max(clubs, d => d.score) || 0.01;
@@ -273,7 +373,7 @@
                     .attr("class", "score-label")
                     .attr("y", d => yScale(d.club_name) + yScale.bandwidth() / 2)
                     .attr("dy", "0.35em")
-                    .attr("x", d => Math.max(0, xScale(d.score)) + 8)
+                    .attr("x", d => Math.max(220, xScale(d.score) + 8))
                     .attr("fill", "#94a3b8")
                     .attr("font-size", "12px")
                     .attr("font-weight", "600")
@@ -283,12 +383,12 @@
                     .text(d => d.score.toFixed(4))
                     .call(el => el.transition().duration(dur).ease(ease)
                         .attr("y", d => yScale(d.club_name) + yScale.bandwidth() / 2)
-                        .attr("x", d => Math.max(0, xScale(d.score)) + 8)
+                        .attr("x", d => Math.max(220, xScale(d.score) + 8))
                         .attr("opacity", 1)),
                 update => update
                     .call(el => el.transition().duration(dur).ease(ease)
                         .attr("y", d => yScale(d.club_name) + yScale.bandwidth() / 2)
-                        .attr("x", d => Math.max(0, xScale(d.score)) + 8)
+                        .attr("x", d => Math.max(220, xScale(d.score) + 8))
                         .tween("text", function (d) {
                             const prev = parseFloat(this.textContent) || 0;
                             const interp = d3.interpolate(prev, d.score);
@@ -351,6 +451,26 @@
         duration = parseInt(speedSel.value);
     });
 
+    if (algoSel) {
+        algoSel.addEventListener("change", () => {
+            const algo = algoSel.value;
+            if (timelines[algo]) {
+                timeline = timelines[algo];
+                // Render the current year with the new data, keeping animation smooth
+                renderFrame(timeline[yearIdx], true);
+            }
+        });
+    }
+
+    if (yearSel) {
+        yearSel.addEventListener("change", () => {
+            if (playing) pause();
+            yearIdx = parseInt(yearSel.value);
+            renderFrame(timeline[yearIdx], true);
+            updateProgress();
+        });
+    }
+
     popupClose.addEventListener("click", () => {
         popup.classList.add("hidden");
     });
@@ -400,5 +520,5 @@
     }
 
     // ── Boot ──
-    fetchData();
+    preloadAllData();
 })();
