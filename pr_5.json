@@ -1,0 +1,32 @@
+[
+  {
+    "club_id": "Lazio",
+    "club_name": "Lazio",
+    "score": 3.666285,
+    "rank": 1
+  },
+  {
+    "club_id": "Parma",
+    "club_name": "Parma",
+    "score": 2.96393,
+    "rank": 2
+  },
+  {
+    "club_id": "Leeds",
+    "club_name": "Leeds",
+    "score": 1.709667,
+    "rank": 3
+  },
+  {
+    "club_id": "Liverpool",
+    "club_name": "Liverpool",
+    "score": 1.286475,
+    "rank": 4
+  },
+  {
+    "club_id": "Man City",
+    "club_name": "Man City",
+    "score": 1.245579,
+    "rank": 5
+  }
+]

@@ -13,6 +13,12 @@
 \newlabel{sec:concepts_overview}{{2.1}{5}{Concepts Overview}{section.2.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1.1}Link Analysis and Web Graph Theory}{5}{subsection.2.1.1}\protected@file@percent }
 \newlabel{subsec:link_analysis}{{2.1.1}{5}{Link Analysis and Web Graph Theory}{subsection.2.1.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.2}The PageRank Algorithm}{6}{subsection.2.1.2}\protected@file@percent }
+\newlabel{subsec:pagerank}{{2.1.2}{6}{The PageRank Algorithm}{subsection.2.1.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Conceptual diagram of web pages and backlinks modeling structural endorsements.}}{6}{figure.caption.9}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:web_graph_concept}{{2.1}{6}{Conceptual diagram of web pages and backlinks modeling structural endorsements}{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {subsubsection}{The Random Surfer Model and Markov Chains}{6}{section*.10}\protected@file@percent }
 \citation{brin1998pagerank}
 \citation{stanford1999pagerank}
 \citation{stanford1999pagerank}
@@ -20,96 +26,93 @@
 \citation{stanford1999pagerank}
 \citation{stanford1999pagerank}
 \citation{mdpi_gluing}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.2}The PageRank Algorithm}{6}{subsection.2.1.2}\protected@file@percent }
-\newlabel{subsec:pagerank}{{2.1.2}{6}{The PageRank Algorithm}{subsection.2.1.2}{}}
-\@writefile{toc}{\contentsline {subsubsection}{The Random Surfer Model and Markov Chains}{6}{section*.12}\protected@file@percent }
-\newlabel{eq:pagerank_basic}{{2.1}{6}{The Random Surfer Model and Markov Chains}{equation.2.1}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Damping Factor and Eigenvector Computation}{6}{section*.13}\protected@file@percent }
-\newlabel{eq:pagerank_damped}{{2.2}{6}{Damping Factor and Eigenvector Computation}{equation.2.2}{}}
-\newlabel{eq:google_matrix}{{2.3}{6}{Damping Factor and Eigenvector Computation}{equation.2.3}{}}
 \citation{brin1998pagerank}
 \citation{stanford1999pagerank}
 \citation{stanford1999pagerank}
+\newlabel{eq:pagerank_basic}{{2.1}{7}{The Random Surfer Model and Markov Chains}{equation.2.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Damping Factor and Eigenvector Computation}{7}{section*.11}\protected@file@percent }
+\newlabel{eq:pagerank_damped}{{2.2}{7}{Damping Factor and Eigenvector Computation}{equation.2.2}{}}
+\newlabel{eq:google_matrix}{{2.3}{7}{Damping Factor and Eigenvector Computation}{equation.2.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Convergence and Complexity}{7}{section*.12}\protected@file@percent }
 \citation{cornell_limitations}
 \citation{wairimu_limitations}
 \citation{kleinberg1999hits}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces PageRank convergence rate over iterations calculated on the football transfer network.}}{8}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:pagerank_convergence}{{2.2}{8}{PageRank convergence rate over iterations calculated on the football transfer network}{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Limitations of the Classical Model}{8}{section*.14}\protected@file@percent }
 \citation{kleinberg1999hits}
-\@writefile{toc}{\contentsline {subsubsection}{Convergence and Complexity}{7}{section*.14}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Limitations of the Classical Model}{7}{section*.15}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.3}The HITS Algorithm}{7}{subsection.2.1.3}\protected@file@percent }
-\newlabel{subsec:hits}{{2.1.3}{7}{The HITS Algorithm}{subsection.2.1.3}{}}
 \citation{kleinberg1999hits}
 \citation{ijarcce_comparative}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.3}The HITS Algorithm}{9}{subsection.2.1.3}\protected@file@percent }
+\newlabel{subsec:hits}{{2.1.3}{9}{The HITS Algorithm}{subsection.2.1.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Mathematical Formulation of HITS}{9}{section*.15}\protected@file@percent }
+\newlabel{eq:hits_authority}{{2.4}{9}{Mathematical Formulation of HITS}{equation.2.4}{}}
+\newlabel{eq:hits_hub}{{2.5}{9}{Mathematical Formulation of HITS}{equation.2.5}{}}
 \citation{kleinberg1999hits}
-\@writefile{toc}{\contentsline {subsubsection}{Mathematical Formulation of HITS}{8}{section*.16}\protected@file@percent }
-\newlabel{eq:hits_authority}{{2.4}{8}{Mathematical Formulation of HITS}{equation.2.4}{}}
-\newlabel{eq:hits_hub}{{2.5}{8}{Mathematical Formulation of HITS}{equation.2.5}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Matrix Interpretation}{8}{section*.17}\protected@file@percent }
-\newlabel{eq:hits_matrix_update}{{2.6}{8}{Matrix Interpretation}{equation.2.6}{}}
 \citation{kleinberg1999hits}
 \citation{ijarcce_comparative}
 \citation{kleinberg1999hits}
 \citation{personalized_pagerank}
+\@writefile{toc}{\contentsline {subsubsection}{Matrix Interpretation}{10}{section*.16}\protected@file@percent }
+\newlabel{eq:hits_matrix_update}{{2.6}{10}{Matrix Interpretation}{equation.2.6}{}}
+\newlabel{eq:hits_eigenvector}{{2.7}{10}{Matrix Interpretation}{equation.2.7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Operational Procedure}{10}{section*.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.4}Modified PageRank Variants}{10}{subsection.2.1.4}\protected@file@percent }
+\newlabel{subsec:pagerank_variants}{{2.1.4}{10}{Modified PageRank Variants}{subsection.2.1.4}{}}
 \citation{topic_sensitive_pagerank}
 \citation{weighted_pagerank_geeks}
 \citation{weighted_pagerank_trec}
 \citation{trustrank2004}
-\newlabel{eq:hits_eigenvector}{{2.7}{9}{Matrix Interpretation}{equation.2.7}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Operational Procedure}{9}{section*.18}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.4}Modified PageRank Variants}{9}{subsection.2.1.4}\protected@file@percent }
-\newlabel{subsec:pagerank_variants}{{2.1.4}{9}{Modified PageRank Variants}{subsection.2.1.4}{}}
 \citation{spark_graphx}
 \citation{pregel2010}
 \citation{pregel2010}
 \citation{spark_graphx}
 \citation{spark_graphx}
 \citation{spark_graphx}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.5}Distributed Graph Processing}{11}{subsection.2.1.5}\protected@file@percent }
+\newlabel{subsec:distributed_graph}{{2.1.5}{11}{Distributed Graph Processing}{subsection.2.1.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.6}Apache Spark and GraphX}{11}{subsection.2.1.6}\protected@file@percent }
+\newlabel{subsec:spark_graphx}{{2.1.6}{11}{Apache Spark and GraphX}{subsection.2.1.6}{}}
 \citation{spark_graphx}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.5}Distributed Graph Processing}{10}{subsection.2.1.5}\protected@file@percent }
-\newlabel{subsec:distributed_graph}{{2.1.5}{10}{Distributed Graph Processing}{subsection.2.1.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.6}Apache Spark and GraphX}{10}{subsection.2.1.6}\protected@file@percent }
-\newlabel{subsec:spark_graphx}{{2.1.6}{10}{Apache Spark and GraphX}{subsection.2.1.6}{}}
 \citation{spark_graphx}
 \citation{liu2014football}
 \citation{ieice2016football}
 \citation{employee_arxiv}
 \citation{liu2014football}
 \citation{ieice2016football}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.7}Complex Network Applications}{11}{subsection.2.1.7}\protected@file@percent }
-\newlabel{subsec:complex_networks}{{2.1.7}{11}{Complex Network Applications}{subsection.2.1.7}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Football Player Transfer Networks}{11}{section*.19}\protected@file@percent }
-\newlabel{eq:weighted_pagerank}{{2.8}{11}{Football Player Transfer Networks}{equation.2.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.7}Complex Network Applications}{12}{subsection.2.1.7}\protected@file@percent }
+\newlabel{subsec:complex_networks}{{2.1.7}{12}{Complex Network Applications}{subsection.2.1.7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Football Player Transfer Networks}{12}{section*.18}\protected@file@percent }
 \citation{employee_arxiv}
 \citation{employee_econstor}
 \citation{employee_duke}
 \citation{brin1998pagerank}
 \citation{stanford1999pagerank}
+\newlabel{eq:weighted_pagerank}{{2.8}{13}{Football Player Transfer Networks}{equation.2.8}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Employee Mobility Networks}{13}{section*.19}\protected@file@percent }
 \citation{york_lecture_slides}
-\@writefile{toc}{\contentsline {subsubsection}{Employee Mobility Networks}{12}{section*.20}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2.2}Literature Review}{12}{section.2.2}\protected@file@percent }
-\newlabel{sec:literature_review}{{2.2}{12}{Literature Review}{section.2.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}PageRank: Origins and Evolution}{12}{subsection.2.2.1}\protected@file@percent }
-\newlabel{subsec:lit_pagerank}{{2.2.1}{12}{PageRank: Origins and Evolution}{subsection.2.2.1}{}}
 \citation{pagerank_wikipedia}
 \citation{mdpi_gluing}
 \citation{kleinberg1999hits}
 \citation{kleinberg1999hits}
 \citation{ijarcce_comparative}
 \citation{ijca_hits_pagerank_2024}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Literature Review}{14}{section.2.2}\protected@file@percent }
+\newlabel{sec:literature_review}{{2.2}{14}{Literature Review}{section.2.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}PageRank: Origins and Evolution}{14}{subsection.2.2.1}\protected@file@percent }
+\newlabel{subsec:lit_pagerank}{{2.2.1}{14}{PageRank: Origins and Evolution}{subsection.2.2.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}HITS: Hubs, Authorities, and Query-Dependent Analysis}{14}{subsection.2.2.2}\protected@file@percent }
+\newlabel{subsec:lit_hits}{{2.2.2}{14}{HITS: Hubs, Authorities, and Query-Dependent Analysis}{subsection.2.2.2}{}}
 \citation{ijarcce_comparative}
 \citation{ijarcce_comparative}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}HITS: Hubs, Authorities, and Query-Dependent Analysis}{13}{subsection.2.2.2}\protected@file@percent }
-\newlabel{subsec:lit_hits}{{2.2.2}{13}{HITS: Hubs, Authorities, and Query-Dependent Analysis}{subsection.2.2.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.3}Comparative Studies of PageRank and HITS}{13}{subsection.2.2.3}\protected@file@percent }
-\newlabel{subsec:lit_comparative}{{2.2.3}{13}{Comparative Studies of PageRank and HITS}{subsection.2.2.3}{}}
 \citation{ijarcce_comparative}
 \citation{ijert_comparative}
 \citation{ijca_hits_pagerank_2024}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.3}Comparative Studies of PageRank and HITS}{15}{subsection.2.2.3}\protected@file@percent }
+\newlabel{subsec:lit_comparative}{{2.2.3}{15}{Comparative Studies of PageRank and HITS}{subsection.2.2.3}{}}
 \citation{brin1998pagerank}
 \citation{spark_graphx}
 \citation{spark_graphx}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.4}Distributed Implementations of Link Analysis}{14}{subsection.2.2.4}\protected@file@percent }
-\newlabel{subsec:lit_distributed}{{2.2.4}{14}{Distributed Implementations of Link Analysis}{subsection.2.2.4}{}}
 \citation{liu2014football}
 \citation{liu2014football}
 \citation{ieice2016football}
@@ -117,21 +120,24 @@
 \citation{employee_arxiv}
 \citation{employee_econstor}
 \citation{employee_duke}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.5}Graph Analytics in Non-Web Domains}{15}{subsection.2.2.5}\protected@file@percent }
-\newlabel{subsec:lit_nonweb}{{2.2.5}{15}{Graph Analytics in Non-Web Domains}{subsection.2.2.5}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Football Transfer Networks}{15}{section*.21}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Employee Mobility Networks}{15}{section*.22}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2.3}Datasets}{15}{section.2.3}\protected@file@percent }
-\newlabel{sec:datasets}{{2.3}{15}{Datasets}{section.2.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces Dataset fields and their roles in the graph construction.}}{16}{table.caption.23}\protected@file@percent }
-\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:dataset_fields}{{2.1}{16}{Dataset fields and their roles in the graph construction}{table.caption.23}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.4}Evaluation Metrics}{16}{section.2.4}\protected@file@percent }
-\newlabel{sec:eval_metrics_bg}{{2.4}{16}{Evaluation Metrics}{section.2.4}{}}
-\newlabel{eq:spearman}{{2.9}{16}{Evaluation Metrics}{equation.2.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.4}Distributed Implementations of Link Analysis}{16}{subsection.2.2.4}\protected@file@percent }
+\newlabel{subsec:lit_distributed}{{2.2.4}{16}{Distributed Implementations of Link Analysis}{subsection.2.2.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.5}Graph Analytics in Non-Web Domains}{16}{subsection.2.2.5}\protected@file@percent }
+\newlabel{subsec:lit_nonweb}{{2.2.5}{16}{Graph Analytics in Non-Web Domains}{subsection.2.2.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Football Transfer Networks}{16}{section*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Employee Mobility Networks}{17}{section*.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}Datasets}{17}{section.2.3}\protected@file@percent }
+\newlabel{sec:datasets}{{2.3}{17}{Datasets}{section.2.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces Dataset fields and their roles in the graph construction.}}{17}{table.caption.22}\protected@file@percent }
+\newlabel{tab:dataset_fields}{{2.1}{17}{Dataset fields and their roles in the graph construction}{table.caption.22}{}}
 \citation{ijarcce_comparative}
 \citation{ijert_comparative}
 \citation{ijca_hits_pagerank_2024}
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}Evaluation Metrics}{18}{section.2.4}\protected@file@percent }
+\newlabel{sec:eval_metrics_bg}{{2.4}{18}{Evaluation Metrics}{section.2.4}{}}
+\newlabel{eq:spearman}{{2.9}{18}{Evaluation Metrics}{equation.2.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.5}Discussion}{18}{section.2.5}\protected@file@percent }
+\newlabel{sec:bg_discussion}{{2.5}{18}{Discussion}{section.2.5}{}}
 \citation{stanford1999pagerank}
 \citation{kleinberg1999hits}
 \citation{spark_graphx}
@@ -141,10 +147,8 @@
 \citation{employee_arxiv}
 \citation{employee_econstor}
 \citation{employee_duke}
-\@writefile{toc}{\contentsline {section}{\numberline {2.5}Discussion}{17}{section.2.5}\protected@file@percent }
-\newlabel{sec:bg_discussion}{{2.5}{17}{Discussion}{section.2.5}{}}
 \@setckpt{chapters/background}{
-\setcounter{page}{19}
+\setcounter{page}{20}
 \setcounter{equation}{9}
 \setcounter{enumi}{2}
 \setcounter{enumii}{0}
@@ -159,7 +163,7 @@
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{0}
+\setcounter{figure}{2}
 \setcounter{table}{1}
 \setcounter{float@type}{8}
 \setcounter{@pps}{0}
@@ -168,7 +172,7 @@
 \setcounter{section@level}{1}
 \setcounter{Item}{13}
 \setcounter{Hfootnote}{0}
-\setcounter{bookmark@seq@number}{28}
+\setcounter{bookmark@seq@number}{23}
 \setcounter{ALC@unique}{0}
 \setcounter{ALC@line}{0}
 \setcounter{ALC@rem}{0}

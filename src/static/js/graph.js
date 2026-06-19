@@ -434,6 +434,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentViz = type;
         isCompareModeActive = (type === 'compare');
         isSankeyModeActive = (type === 'sankey');
+        isChordModeActive = (type === 'chord');
         
         vizBtns.forEach(btn => {
             btn.classList.toggle('active', btn.dataset.viz === type);
@@ -503,6 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
             top_n: 10,
             league: leagueSelect.value,
             weight_mode: weightModeSelect.value,
+            algorithm: algorithmSelect.value,
             start_season: startSeasonSelect.value,
             end_season: endSeasonSelect.value
         };

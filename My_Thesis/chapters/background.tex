@@ -23,6 +23,15 @@ Link analysis is the discipline concerned with extracting meaningful structural 
 
 In 1998, Sergey Brin and Larry Page introduced the PageRank algorithm, fundamentally shifting web search from purely textual matching to structural link analysis. By conceptualizing the World Wide Web as a massive directed graph, PageRank operated on the premise that a hyperlink from one page to another acts as an endorsement. This allowed search engines to rank pages based on their objective, topological authority rather than easily manipulated keyword frequencies, significantly improving the quality of information retrieval~\cite{brin1998pagerank}.
 
+To formalize this model, web pages are conceptualized as nodes in a directed graph, where hyperlinks serve as directed edges, or backlinks. Figure~\ref{fig:web_graph_concept} demonstrates this fundamental structure: a directed hyperlink from Page $A$ to Page $B$ constitutes an endorsement, transferring structural importance to Page $B$. Page $C$ receives multiple incoming edges (backlinks) from other pages, thereby accumulating a higher PageRank score. The visual styling of this network (represented in dark-theme blue accents) mirrors the interactive node-link visualization layout utilized in the backend of the Transfer Analyzer application developed in this thesis.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/web_graph_concept.png}
+    \caption{Conceptual diagram of web pages and backlinks modeling structural endorsements.}
+    \label{fig:web_graph_concept}
+\end{figure}
+
 \subsubsection{The Random Surfer Model and Markov Chains}
 
 Classical PageRank relies on the ``random surfer'' model, simulating a user randomly clicking hyperlinks. Modeled as a directed graph $G=(V,E)$, a node $u$ confers a fraction of its importance, $PR(u)/L(u)$ (where $L(u)$ is the out-degree of $u$), to its destination node $v$. The iterative propagation of rank is defined as:
@@ -55,6 +64,15 @@ where $\mathbf{1}$ is the $N$-dimensional column vector of ones. By the Perron--
 \subsubsection{Convergence and Complexity}
 
 The algorithm's convergence rate is bounded by the damping factor $d$. The overall time complexity for computation via the power method is $O(k \times (N + E))$, where $N$ represents nodes, $E$ represents edges, and $k$ represents the iterations required, making it highly scalable for large graphs~\cite{brin1998pagerank, stanford1999pagerank}. In practice, convergence to a tolerance of $\epsilon = 10^{-6}$ typically requires $k \approx 50$--$100$ iterations for web-scale graphs with $d = 0.85$~\cite{stanford1999pagerank}.
+
+To empirically illustrate the convergence properties of the algorithm, Figure~\ref{fig:pagerank_convergence} plots the convergence rate of PageRank computed over the real-world professional football transfer dataset within the Transfer Analyzer system. The convergence is quantified using the $L_2$-norm distance between the score vectors of successive iterations, defined as $\|\boldsymbol{\pi}^{(k)} - \boldsymbol{\pi}^{(k-1)}\|_2$. As shown in the plot, the $L_2$-norm difference decreases exponentially with the number of iterations, demonstrating that the algorithm rapidly converges to a stable stationary distribution, with substantial stabilization occurring within $10$ to $15$ iterations.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/pagerank_convergence.png}
+    \caption{PageRank convergence rate over iterations calculated on the football transfer network.}
+    \label{fig:pagerank_convergence}
+\end{figure}
 
 
 \subsubsection{Limitations of the Classical Model}
