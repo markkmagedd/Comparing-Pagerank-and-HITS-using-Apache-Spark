@@ -1,5 +1,5 @@
 # Presentation Context: Thesis Defense
-**Last Updated:** 2026-06-19 (Session 2)
+**Last Updated:** 2026-06-20 (Session 3)
 
 This document contains all context, design decisions, and slide progress for Mark's 30-minute Bachelor's thesis defense presentation:
 **"Comparing PageRank and HITS using Apache Spark: A Network Analysis of the Global Football Transfer Market"**
@@ -129,9 +129,29 @@ After trying multiple Canva templates, the final chosen template is:
 
 ---
 
-### SLIDE 6: Theoretical Background: PageRank & HITS Overview — DONE (image generated)
-**Layout:** Two-column text layout with an orange callout box at the bottom.
-**Updates:** Replace laptop image with the generated network graph image. Add left column PageRank info, right column HITS info, and Orange callout box at the bottom.
+### SLIDE 6: Theoretical Background: PageRank & HITS Overview — DONE ✅
+**Layout:** Two-column cards (two separate rounded rectangle cards on a slightly lighter purple background), orange callout box.
+**Title:** "Background" (White) + "Algorithms" (Cyan)
+**Left card:** PageRank (Brin & Page, 1998) — Models a random surfer. One global score per node. `PageRank` highlighted Orange.
+**Right card:** HITS (Kleinberg, 1999) — Hub score + Authority score, mutual reinforcement. `HITS` highlighted Orange.
+**Orange box:** "PageRank and HITS both analyze link structure to rank nodes — but they ask fundamentally different questions and produce mathematically distinct outputs."
+**Diagonal decorative shape:** Kept from template as background depth element.
+
+---
+
+### SLIDE 7: PageRank Algorithm — IN PROGRESS 🔄
+**Layout:** ML Workflow 4-block template (title left, 2×2 text blocks, image panel right)
+**Title:** "PageRank" (White) + "Algorithm" (Cyan)
+**Replace:** "Thynk Unlimited" → GUC Logo
+**Replace right image:** `My_Thesis/network_graph.png` (generated network visualization)
+**4 blocks:**
+- Top Left: "The Equation" → Upload `My_Thesis/pagerank_equation.png`
+- Top Right: "Random Surfer Model" → prob d follow link, prob (1-d) teleport
+- Bottom Left: "Google Matrix" → Upload `My_Thesis/google_matrix_equation.png`
+- Bottom Right: "Convergence Guaranteed" → Perron-Frobenius theorem
+
+**Equation PNG files location:** `My_Thesis/pagerank_equation.png` and `My_Thesis/google_matrix_equation.png`
+(Generated via matplotlib — transparent background, white equation text — ready to upload to Canva)
 
 ---
 

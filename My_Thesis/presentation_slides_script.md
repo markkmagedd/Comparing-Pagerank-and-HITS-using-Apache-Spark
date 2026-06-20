@@ -136,25 +136,39 @@
 
 ---
 
-## Slide 7: PageRank: Random Surfer & Google Matrix (6:45 - 8:15)
-* **Canva Template Page:** **Page 2 (What is a Data Analyst? Layout)**
+## Slide 7: PageRank: Random Surfer & Google Matrix (6:45 - 8:15) 🔄 IN PROGRESS
+* **Canva Template Page:** **ML Workflow 4-block layout** (title left, 2×2 grid of text blocks, image on right)
 * **Visual Setup:**
-  * Left: Damped PageRank equation and matrix notation.
-  * Right: Bar chart with magnifying glass graphic (representing PageRank scoring).
-* **Slide Content:**
-  * **Damped PageRank Equation:**
-    $$PR(v) = \frac{1-d}{N} + d \sum_{u \in B(v)} \frac{PR(u)}{L(u)}$$
-    * $d$: Damping factor (typically 0.85).
-    * $L(u)$: Out-degree of node $u$.
-  * **Matrix Notation & Google Matrix:**
-    $$\mathbf{G} = d\,\mathbf{M} + \frac{1-d}{N}\,\mathbf{1}\mathbf{1}^{T}$$
-    * $\mathbf{M}$: Transition probability matrix ($M_{ij} = 1/L(j)$).
-    * $\boldsymbol{\pi} = \mathbf{G}\boldsymbol{\pi}$ (Principal eigenvector corresponding to eigenvalue $\lambda = 1$).
-  * **Guaranteed Convergence:** By Perron-Frobenius theorem, $\mathbf{G}$ is positive, primitive, and irreducible, ensuring a unique stationary distribution.
+  * Title: "PageRank" (White) + "Algorithm" (Cyan)
+  * 4 content blocks in 2×2 grid
+  * Right side: Network graph image (`My_Thesis/network_graph.png`)
+  * GUC Logo: Top left (replace "Thynk Unlimited")
+* **Equation Images (pre-rendered PNGs — upload to Canva):**
+  * `My_Thesis/pagerank_equation.png` — main PR equation
+  * `My_Thesis/google_matrix_equation.png` — Google Matrix equation
+* **4 Block Content:**
+
+  **Top Left — "The Equation"**
+  > Insert image: `pagerank_equation.png`
+  > PR(v) = (1-d)/N + d × Σ PR(u)/L(u)
+
+  **Top Right — "Random Surfer Model"**
+  > With probability d, the surfer follows a link.
+  > With probability (1-d), they teleport to a random page.
+
+  **Bottom Left — "Google Matrix"**
+  > Insert image: `google_matrix_equation.png`
+  > G = dM + ((1-d)/N) · 11ᵀ
+  > M stores normalized link probabilities (Mᵢⱼ = 1/L(j))
+
+  **Bottom Right — "Convergence Guaranteed"**
+  > By the Perron-Frobenius theorem, G is positive and irreducible — ensuring a unique stationary distribution.
+
+* **Colors:** "PageRank" in block headers → Orange `#FF6B35`. Everything else → White.
 * **Speaker Script:**
-  > "PageRank, introduced by Sergey Brin and Larry Page, simulates a user randomly browsing the web. 
-  > As shown in the equation on the left, it combines two behaviors. With probability $d$, the surfer follows out-links, sharing the node's rank divided by its out-degree $L(u)$. With probability $1-d$, the surfer teleports to a random page. 
-  > In matrix notation, this gives us the Google Matrix $\mathbf{G}$. The teleportation component ensures the matrix is positive, primitive, and irreducible, which by the Perron-Frobenius theorem guarantees that the power iteration method will converge to a unique principal eigenvector."
+  > "PageRank, introduced by Brin and Page, simulates a random surfer browsing the web.
+  > As shown in the top-left equation, it combines two behaviors. With probability d — the damping factor, typically 0.85 — the surfer follows a link, sharing rank divided by the number of outgoing links. With probability 1 minus d, they teleport to a completely random page.
+  > In matrix form, this gives us the Google Matrix G. The teleportation term makes the matrix positive and irreducible, which by the Perron-Frobenius theorem guarantees that power iteration will always converge to a unique stationary distribution — the PageRank vector."
 * **Timing:** 1.5 minutes
 
 ---
