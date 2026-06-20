@@ -1,4 +1,4 @@
-﻿# Presentation Context: Thesis Defense
+# Presentation Context: Thesis Defense
 **Last Updated:** 2026-06-19 (Session 2)
 
 This document contains all context, design decisions, and slide progress for Mark's 30-minute Bachelor's thesis defense presentation:
@@ -60,22 +60,28 @@ After trying multiple Canva templates, the final chosen template is:
 | Slide # | Topic | Status |
 |---|---|---|
 | 1 | Title Slide | DONE |
-| 2 | Introduction & Motivation | DONE (3 tweaks remaining) |
-| 3 | Problem Statement | IN PROGRESS |
-| 4 | The Football Transfer Network (dataset intro) | TODO |
-| 5 | Background: PageRank Algorithm | TODO |
-| 6 | Background: HITS Algorithm | TODO |
-| 7 | Methodology: Graph Construction | TODO |
-| 8 | Methodology: Apache Spark & PySpark | TODO |
-| 9 | System Architecture (Transfer Analyzer) | TODO |
-| 10-12 | Results: Rankings & Comparisons | TODO |
-| 13-15 | Live App Demo | TODO |
-| 16-17 | Computational Performance | TODO |
-| 18-19 | Discussion & Analysis | TODO |
-| 20 | Conclusion | TODO |
-| 21 | Future Work | TODO |
-| 22 | References | TODO |
-| 23 | Thank You / Q&A | TODO |
+| 2 | Introduction & Motivation | DONE |
+| 3 | Problem Statement | DONE |
+| 4 | Research Questions | DONE |
+| 5 | Thesis Objectives | DONE (missing Title on Canva slide) |
+| 6 | Theoretical Background: PageRank & HITS Overview | DONE (needs photo update) |
+| 7 | PageRank: Random Surfer & Google Matrix | TODO |
+| 8 | PageRank: Convergence & Limitations | TODO |
+| 9 | HITS: Hubs & Authorities Duality | TODO |
+| 10 | HITS: Mathematical & Matrix Formulation | TODO |
+| 11 | Algorithmic Comparison: PageRank vs. HITS | TODO |
+| 12 | Methodology: Graph & Transfer Market Formulation | TODO |
+| 13 | Methodology: PySpark Processing Pipeline | TODO |
+| 14 | System Architecture: The Transfer Analyzer | TODO |
+| 15 | App Demo: Interactive Visualizations | TODO |
+| 16 | App Demo: Compare Mode & Details Panel | TODO |
+| 17 | App Demo: Dynamic Historical View | TODO |
+| 18 | Results: Buyer-Oriented Analysis | TODO |
+| 19 | Results: Seller-Oriented Analysis | TODO |
+| 20 | Results: Weighting Mode Comparison | TODO |
+| 21 | Case Study: FC Barcelona Longitudinal Analysis | TODO |
+| 22 | Discussion & Contributions | TODO |
+| 23 | Conclusion & Q&A | TODO |
 
 ---
 
@@ -83,59 +89,49 @@ After trying multiple Canva templates, the final chosen template is:
 
 ### SLIDE 1: Title Slide — DONE
 **Layout:** Dark purple bg, title left, network graph right, GUC logo top-left.
-
 **Content:**
-- Main Title: Comparing PageRank and HITS using Apache Spark
-  - "PageRank" = Orange, "HITS" = Orange, rest = White
-- Subtitle: A Network Analysis of the Global Football Transfer Market (White)
-- Presented by: Mark Maged Samir
-- Supervised by: Dr. Islam A. El-Maddah
-- German University in Cairo — 2026
+- Title: Comparing PageRank and HITS using Apache Spark
+- Presenter: Mark Maged Samir
+- Supervisor: Dr. Islam A. El-Maddah
 - GUC Logo: Top left
-- Visual: Network node graph (light blue/cyan) on the right side
-
-**Speaker script:** None — this is the opening slide shown while the committee settles.
 
 ---
 
-### SLIDE 2: Introduction & Motivation — DONE (3 tweaks remaining)
+### SLIDE 2: Introduction & Motivation — DONE
 **Layout:** Title + 4 bullet points on left, large network graph visual on right.
-
 **Content:**
-- Title: Introduction & Motivation (Cyan #00D4FF) — CURRENTLY STILL GREEN, NEEDS CHANGING
-- Bullet 1: The web is a graph — hyperlinks are votes, PageRank & HITS turn those votes into rankings.
-- Bullet 2: These algorithms power Google Search, recommendations, and fraud detection.
-- Bullet 3: Can they reveal hidden structure in a completely different domain — professional football?
-- Bullet 4: This thesis uses the global transfer market as a testbed to compare them at scale using Apache Spark.
-- Orange highlights: "PageRank & HITS", "Google Search", "Apache Spark" — NOT YET DONE
-
-**3 remaining tweaks:**
-1. Change title color from GREEN to Cyan #00D4FF
-2. Highlight "PageRank & HITS", "Google Search", "Apache Spark" in Orange #FF6B35
-3. Increase bullet text size to 18-20px
-
-**Speaker script:**
-"When Larry Page and Jon Kleinberg introduced PageRank and HITS in the late 1990s, they changed how we understand networks. Instead of looking at content alone, they looked at connections — who links to whom, and what that says about importance.
-
-These algorithms are everywhere today. Google Search, YouTube recommendations, even fraud detection. But they have mostly been studied on web data.
-
-So the question I asked was: can these same algorithms reveal something meaningful about a completely different kind of network — the global football transfer market? And how do they compare when running on the same data, at the same time, under identical conditions? That is exactly what this thesis explores."
+- Title: Introduction & Motivation (Cyan `#00D4FF`)
+- Bullets: The web is a graph; algorithms power Google Search; professional football transfer market testbed using Apache Spark.
+- Orange Highlights: PageRank & HITS, Google Search, Apache Spark.
 
 ---
 
-### SLIDE 3: Problem Statement — IN PROGRESS (not yet built in Canva)
-**Decision:** Problem Statement comes BEFORE the Transfer Network intro slide.
-**Layout:** Clean dark purple background. No world map. Simple title + 4 bullets.
-
+### SLIDE 3: Problem Statement — DONE
+**Layout:** Clean dark purple background, person-with-question-marks icon.
 **Content:**
-- Title: Problem Statement (Cyan)
-- Bullet 1: Most studies evaluate PageRank and HITS separately — never on the same dataset under identical conditions.
-- Bullet 2: Existing research is web-centric — little work on weighted, financially-driven networks.
-- Bullet 3: No interactive tool exists to explore how parameter changes affect rankings in real time.
-- Bullet 4 (bold/orange): This thesis bridges all three gaps.
+- Title: Problem Statement (Cyan `#00D4FF`)
+- Bullets: PageRank and HITS evaluated separately; research is web-centric; no interactive tool exists.
+- Highlights: "PageRank and HITS" in Orange; last bullet "This thesis bridges all three gaps." in Bold Orange.
 
-**Speaker script:**
-"What is actually missing in the literature? First, there is no unified comparison — studies use different datasets, so results cannot be fairly evaluated side by side. Second, almost everything uses web data. Nobody has tested these algorithms on a financially-weighted network. And third, there is no interactive way to explore the results. My thesis addresses all three gaps."
+---
+
+### SLIDE 4: Research Questions — DONE
+**Layout:** Dark purple background, person-with-question-marks icon.
+**Content:**
+- Title: Research Questions
+- Bullets: RQ1 (Theory), RQ2 (Implementation), RQ3 (Domain Insights) in Orange.
+
+---
+
+### SLIDE 5: Thesis Objectives — DONE (tweak needed)
+**Layout:** 5 rounded purple pills containing objectives 1–5.
+**Tweak needed:** Add "Thesis Objectives" title at the top of the Canva slide (Thesis in White, Objectives in Cyan).
+
+---
+
+### SLIDE 6: Theoretical Background: PageRank & HITS Overview — DONE (image generated)
+**Layout:** Two-column text layout with an orange callout box at the bottom.
+**Updates:** Replace laptop image with the generated network graph image. Add left column PageRank info, right column HITS info, and Orange callout box at the bottom.
 
 ---
 

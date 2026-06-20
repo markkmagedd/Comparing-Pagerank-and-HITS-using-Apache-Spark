@@ -1,10 +1,17 @@
-# Thesis Defense Presentation Script & Slides Outline (Canva Template Mapped)
+# Thesis Defense Presentation Script & Slides Outline
 
 **Title:** Comparing PageRank and HITS using Apache Spark: A Network Analysis of the Global Football Transfer Market  
 **Presenter:** Mark Maged Samir  
 **Supervisor:** Dr. Islam A. El-Maddah  
-**Target Duration:** 30 Minutes (23 Slides)  
-**Theme:** Dark-mode tech theme (Background: `#0B0E14`, Accent: `#4361EE`, Secondary Panels: `#1A1D27`, Text: `#FFFFFF` / `#9CA3AF`)
+**Target Duration:** 30 Minutes  
+**Template:** Dark purple Machine Learning Canva template  
+**Color System:**
+- Slide titles → Cyan `#00D4FF`
+- Key terms (PageRank, HITS, Apache Spark) → Orange `#FF6B35`
+- Body/bullet text → White `#FFFFFF`
+- GUC Logo → Top-left corner of EVERY slide
+
+**Format Rule:** ALL slides use Title + Bullet Points only. No complex layouts, no icons, no stat callouts.
 
 ---
 
@@ -46,42 +53,42 @@
 
 ---
 
-## Slide 3: Gaps & Problem Statement (2:00 - 3:15)
-* **Canva Template Page:** **Page 4 (The Global Football Transfer Market Layout - Page 4 of your PDF)**
-* **Visual Setup:**
-  * Left: Title ("Problem Statement") and bullet points.
-  * Right: Global transfer connection map graphic.
-* **Slide Content:**
-  * **Algorithmic Isolation:** Existing comparative literature evaluates PageRank and HITS on disjoint datasets, preventing direct side-by-side behavioral control.
-  * **Web-Graph Bias:** Research is heavily biased toward web graphs or synthetic networks, leaving weighted financial networks under-explored.
-  * **Lack of Multi-Modal Interaction:** Scarcity of unified tools combining execution with multiple visualizations (ranked lists, network topologies, chord flows).
+## Slide 3: Problem Statement (2:00 - 3:15) ✅ FINALIZED
+* **Template Slide:** Dark purple background, person-with-question-marks icon on the right.
+* **Colors:** "PageRank and HITS" → Orange. Last bullet → Bold Orange.
+* **Slide Content (Bullet Points):**
+  * Most studies evaluate **PageRank and HITS** separately — never on the same dataset under identical conditions.
+  * Existing research is web-centric — little work on weighted, financially-driven networks.
+  * No interactive tool exists to explore how parameter changes affect rankings in real time.
+  * **This thesis bridges all three gaps.** ← Bold, Orange, no bullet point
 * **Speaker Script:**
-  > "This brings us to the core problem statement. Despite the extensive individual study of both PageRank and HITS, three major gaps persist in the literature. 
-  > 
-  > First, there is a lack of unified comparative environments where both algorithms can be executed on the same dataset under identical parameter constraints. Second, existing comparative studies are heavily biased toward web-crawls or synthetic scale-free networks. We do not fully understand how global, query-independent rankings and local, dual-score decompositions differ on non-web, weighted networks like the transfer market. Finally, there is a lack of interactive systems that allow researchers to adjust parameters in real-time and observe the immediate effects on both ranked tables and network visualizations. My thesis addresses these three limitations."
+  > "What is actually missing in the literature? First, there is no unified comparison — studies use different datasets, so results cannot be fairly evaluated side by side. Second, almost everything uses web data. Nobody has tested these algorithms on a financially-weighted network. And third, there is no interactive way to explore the results. My thesis addresses all three gaps."
 * **Timing:** 1.25 minutes
 
 ---
 
-## Slide 4: Research Questions (3:15 - 4:30)
-* **Canva Template Page:** **Page 4 (What is a Data Analyst? Checklist Layout)**
-* **Visual Setup:**
-  * Left: Title and introduction of Research Questions.
-  * Right: Checklist clipboard with clock graphic.
-* **Slide Content:**
-  * **[x] RQ1 (Theoretical):** What are the mathematical, computational, and security distinctions between PageRank and HITS?
-  * **[x] RQ2 (Computational):** How can both algorithms be implemented within a single PySpark pipeline for weighted directed graphs?
-  * **[x] RQ3 (Domain-Specific):** What structural insights do they reveal about the transfer network, and how do filters and weight settings alter output rankings?
+## Slide 4: Research Questions (3:15 - 4:30) ✅ FINALIZED
+* **Template Slide:** Dark purple background, person-with-question-marks icon on the right.
+* **Colors:** RQ1/RQ2/RQ3 → Orange. Everything else → White. Title: "Research" white + "Questions" cyan on one line.
+* **Slide Content (Bullet Points):**
+  * **RQ1** — Theory
+    How do PageRank and HITS differ mathematically, computationally, and in spam vulnerability?
+  * **RQ2** — Implementation
+    How can both algorithms run in one unified PySpark pipeline on a weighted directed graph?
+  * **RQ3** — Domain Insights
+    What does each algorithm reveal about the football transfer network across different parameters?
+* **Note:** RQ1/RQ2/RQ3 in Orange. Everything else White. No cyan on body text.
+* **Full thesis wording (say out loud, not on slide):**
+  * RQ1: What are the theoretical and computational distinctions between PageRank and HITS in terms of mathematical formulations, convergence guarantees, scalability, and vulnerability to manipulation?
+  * RQ2: How can both algorithms be implemented within a unified distributed pipeline using PySpark and applied to a weighted directed graph from professional football transfer data?
+  * RQ3: What structural insights do PageRank and HITS reveal about the football transfer network, and how do they differ across damping factor, iteration count, and edge weighting mode?
 * **Speaker Script:**
-  > "My work is guided by three research questions. 
-  > RQ1 covers the theoretical and mathematical differences in convergence, complexity, and spam vulnerability. 
-  > RQ2 addresses the distributed implementation: how to model transfers as a graph and execute the algorithms in parallel using PySpark. 
-  > And RQ3 focuses on the sports economics domain: what structural insights do we obtain, and how do variables like transfer fees versus transfer count alter the resulting ranks?"
+  > "My thesis is guided by 3 research questions. RQ1 is theoretical — looking at the math, convergence, and spam resistance of each algorithm. RQ2 is technical — how to implement both in one PySpark pipeline. And RQ3 is applied — what do the results actually tell us about the football transfer market when we change parameters like the damping factor or edge weighting?"
 * **Timing:** 1.25 minutes
 
 ---
 
-## Slide 5: Thesis Objectives (4:30 - 5:30)
+## Slide 5: Thesis Objectives (4:30 - 5:30) ✅ FINALIZED
 * **Canva Template Page:** **Page 5 (Required Skills Pill Layout)**
 * **Visual Setup:**
   * Title: "Thesis Objectives"
@@ -108,22 +115,23 @@
 
 ---
 
-## Slide 6: Theoretical Background: The Web Graph (5:30 - 6:45)
-* **Canva Template Page:** **Page 7 (Work Process Layout)**
+## Slide 6: Theoretical Background: PageRank & HITS Overview (5:30 - 6:45) ✅ FINALIZED
+* **Canva Template Page:** **Page 7 (Two-column text layout with orange box)**
 * **Visual Setup:**
-  * Left: Two overlapping gears graphic (representing graph structure and links).
-  * Right: Graph notations and equations.
+  * Title: "Theoretical Background"
+  * Left Column: PageRank description
+  * Right Column: HITS description
+  * Bottom: Orange callout box with summary sentence
+  * Visual Element: Abstract network graph visualization image (glowing nodes and directed edges)
 * **Slide Content:**
-  * **Graph Representation:** Directed Graph $G = (V, E)$
-    * $V = \{v_1, v_2, \dots, v_N\}$ (Nodes / Webpages / Clubs)
-    * $E \subseteq V \times V$ (Directed Edges / Hyperlinks / Transfers)
-  * **In-degree and Out-degree:**
-    * In-degree: $\deg^{-}(v) = |B(v)|$ where $B(v) = \{u \in V : (u,v) \in E\}$ (Predecessors)
-    * Out-degree: $\deg^{+}(v) = |F(v)|$ where $F(v) = \{w \in V : (v,w) \in E\}$ (Successors)
-  * **Link Semantics:** Directional endorsement conveying structural status.
+  * **Left Column:** PageRank (Brin & Page, 1998) — Models a random surfer navigating the web. Assigns one global score per node based on incoming links.
+  * **Right Column:** HITS (Kleinberg, 1999) — Decomposes each node into two roles: Hub score and Authority score, based on mutual reinforcement between nodes.
+  * **Orange Callout Box:** PageRank and HITS both analyze link structure to rank nodes — but they ask fundamentally different questions and produce mathematically distinct outputs.
 * **Speaker Script:**
-  > "Before looking at the transfer graph, let's outline the theoretical foundations of graph theory. The web is modeled as a directed graph $G = (V,E)$ where pages are nodes and hyperlinks are directed edges. 
-  > We define the predecessors, $B(v)$, which determine the node's in-degree, and the successors, $F(v)$, which determine its out-degree. In link analysis, an edge from node $u$ to node $v$ represents an endorsement, transferring structural prestige or importance to the destination page."
+  > "Before looking at the transfer graph, let's introduce both algorithms at a high level. PageRank and HITS both analyze link structure to rank nodes, but they ask fundamentally different questions. 
+  > PageRank simulates a random surfer on the web to assign a single global score of centrality based on incoming links. 
+  > HITS, on the other hand, decomposes each node into two distinct roles: a hub score and an authority score, which reinforce each other. 
+  > They use the same graph, but they give us two completely different views of node importance."
 * **Timing:** 1.25 minutes
 
 ---
