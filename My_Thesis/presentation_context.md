@@ -1,4 +1,4 @@
-﻿# Presentation Context: Thesis Defense
+# Presentation Context: Thesis Defense
 **Last Updated:** 2026-06-19 (Session 2)
 
 This document contains all context, design decisions, and slide progress for Mark's 30-minute Bachelor's thesis defense presentation:
@@ -26,7 +26,9 @@ After trying multiple Canva templates, the final chosen template is:
 ### Template Characteristics:
 - **Background:** Deep dark purple/violet
 - **Title accent color:** Cyan `#00D4FF` (for slide titles and key headings)
-- **Keyword highlights:** Orange `#FF6B35` (for key terms like "PageRank", "HITS", "Apache Spark")
+- **PageRank highlights:** Magenta/Pink (for every mention of "PageRank")
+- **HITS highlights:** Orange `#FF6B35` (for every mention of "HITS")
+- **Apache Spark highlights:** Orange `#FF6B35`
 - **Body text:** White `#FFFFFF`
 - **Secondary text:** Light gray
 - **Network graph element:** Light blue/cyan nodes and edges (used as right-side visual on slides)
@@ -34,11 +36,12 @@ After trying multiple Canva templates, the final chosen template is:
 ### Color Rules (apply to ALL slides):
 | Element | Color |
 |---|---|
-| Slide titles | Cyan #00D4FF |
-| Key algorithm names (PageRank, HITS) | Orange #FF6B35 |
-| Body/bullet text | White #FFFFFF |
+| Slide titles | Cyan `#00D4FF` |
+| **PageRank** mentions | Magenta/Pink |
+| **HITS** mentions | Orange `#FF6B35` |
+| **Apache Spark** mentions | Orange `#FF6B35` |
+| Body/bullet text | White `#FFFFFF` |
 | Secondary/caption text | Light gray |
-| Apache Spark mentions | Orange #FF6B35 |
 | GUC Logo | Always top-left corner of every slide |
 
 ### Important design notes:
@@ -56,26 +59,36 @@ After trying multiple Canva templates, the final chosen template is:
 
 ---
 
-## 4. Presentation Flow (Confirmed Slide Order)
-| Slide # | Topic | Status |
-|---|---|---|
-| 1 | Title Slide | DONE |
-| 2 | Introduction & Motivation | DONE (3 tweaks remaining) |
-| 3 | Problem Statement | IN PROGRESS |
-| 4 | The Football Transfer Network (dataset intro) | TODO |
-| 5 | Background: PageRank Algorithm | TODO |
-| 6 | Background: HITS Algorithm | TODO |
-| 7 | Methodology: Graph Construction | TODO |
-| 8 | Methodology: Apache Spark & PySpark | TODO |
-| 9 | System Architecture (Transfer Analyzer) | TODO |
-| 10-12 | Results: Rankings & Comparisons | TODO |
-| 13-15 | Live App Demo | TODO |
-| 16-17 | Computational Performance | TODO |
-| 18-19 | Discussion & Analysis | TODO |
-| 20 | Conclusion | TODO |
-| 21 | Future Work | TODO |
-| 22 | References | TODO |
-| 23 | Thank You / Q&A | TODO |
+## 4. Presentation Flow (Confirmed Slide Order — OPTION A LOCKED IN)
+> **Decision (2026-06-19 Session 3):** Following `presentation_slides_script.md` order (Option A).
+> This matches the thesis chapter structure: Intro → Problem → RQs → Objectives → Theory → Methodology → App → Results → Conclusion.
+> The "Football Transfer Network dataset intro" slide has been REMOVED — dataset context is woven into the Methodology slide instead.
+
+| Slide # | Topic | Source (script.md) | Status |
+|---|---|---|---|
+| 1 | Title Slide | Slide 1 | DONE |
+| 2 | Introduction & Motivation | Slide 2 | DONE (3 tweaks remaining) |
+| 3 | Problem Statement | Slide 3 | IN PROGRESS |
+| 4 | Research Questions | Slide 4 | TODO |
+| 5 | Thesis Objectives | Slide 5 | TODO |
+| 6 | Theoretical Background: The Web Graph | Slide 6 | TODO |
+| 7 | PageRank: Random Surfer & Google Matrix | Slide 7 | TODO |
+| 8 | PageRank: Convergence & Limitations | Slide 8 | TODO |
+| 9 | HITS: Hubs & Authorities Duality | Slide 9 | TODO |
+| 10 | HITS: Mathematical & Matrix Formulation | Slide 10 | TODO |
+| 11 | Algorithmic Comparison: PageRank vs. HITS | Slide 11 | TODO |
+| 12 | Methodology: Graph & Transfer Market Formulation | Slide 12 | TODO |
+| 13 | Methodology: PySpark Processing Pipeline | Slide 13 | TODO |
+| 14 | System Architecture: The Transfer Analyzer | Slide 14 | TODO |
+| 15 | App Demo: Interactive Visualizations | Slide 15 | TODO |
+| 16 | App Demo: Compare Mode & Details Panel | Slide 16 | TODO |
+| 17 | App Demo: Dynamic Historical View | Slide 17 | TODO |
+| 18 | Results: Buyer-Oriented Analysis | Slide 18 | TODO |
+| 19 | Results: Seller-Oriented Analysis | Slide 19 | TODO |
+| 20 | Results: Weighting Mode Comparison | Slide 20 | TODO |
+| 21 | Case Study: FC Barcelona Longitudinal Analysis | Slide 21 | TODO |
+| 22 | Discussion & Contributions | Slide 22 | TODO |
+| 23 | Conclusion & Q&A | Slide 23 | TODO |
 
 ---
 

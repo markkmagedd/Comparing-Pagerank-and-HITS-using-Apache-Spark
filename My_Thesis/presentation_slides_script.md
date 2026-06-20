@@ -131,22 +131,35 @@
 ## Slide 7: PageRank: Random Surfer & Google Matrix (6:45 - 8:15)
 * **Canva Template Page:** **Page 2 (What is a Data Analyst? Layout)**
 * **Visual Setup:**
-  * Left: Damped PageRank equation and matrix notation.
-  * Right: Bar chart with magnifying glass graphic (representing PageRank scoring).
+  * Left: 4-block quad layout. Each block has a heading (Cyan), a short text description, and a rendered LaTeX equation underneath.
+    * Block 1 — The Equation: text explaining d and N, then PR(v) equation.
+    * Block 2 — Random Surfer Model: text only (no equation) — explains the two surfer behaviors.
+    * Block 3 — Google Matrix: text explaining M matrix, then G = dM + ((1-d)/N)·11ᵀ equation.
+    * Block 4 — Convergence Guaranteed: text explaining Perron-Frobenius, then π = Gπ equation.
+  * Right: Glowing purple/blue network graph image.
+* **Color Rules on This Slide:**
+  * Title: Cyan `#00D4FF`
+  * "PageRank" in title and body: Magenta/Pink
+  * "Google Matrix": Cyan heading
+  * Equations: White rendered LaTeX
 * **Slide Content:**
-  * **Damped PageRank Equation:**
-    $$PR(v) = \frac{1-d}{N} + d \sum_{u \in B(v)} \frac{PR(u)}{L(u)}$$
-    * $d$: Damping factor (typically 0.85).
-    * $L(u)$: Out-degree of node $u$.
-  * **Matrix Notation & Google Matrix:**
-    $$\mathbf{G} = d\,\mathbf{M} + \frac{1-d}{N}\,\mathbf{1}\mathbf{1}^{T}$$
-    * $\mathbf{M}$: Transition probability matrix ($M_{ij} = 1/L(j)$).
-    * $\boldsymbol{\pi} = \mathbf{G}\boldsymbol{\pi}$ (Principal eigenvector corresponding to eigenvalue $\lambda = 1$).
-  * **Guaranteed Convergence:** By Perron-Frobenius theorem, $\mathbf{G}$ is positive, primitive, and irreducible, ensuring a unique stationary distribution.
+  * **Block 1 — The Equation:**
+    * Text: With probability d, each node shares its rank equally across its out-links. N is the total number of nodes.
+    * LaTeX: $$PR(v) = \frac{1-d}{N} + d \sum_{u \in B(v)} \frac{PR(u)}{L(u)}$$
+  * **Block 2 — Random Surfer Model:**
+    * Text only: With probability d, the surfer follows a link. With probability (1-d), they teleport to a random page.
+  * **Block 3 — Google Matrix:**
+    * Text: M is the transition probability matrix where each column sums to 1. The full Google Matrix G is always positive and stochastic.
+    * LaTeX: $$\mathbf{G} = d\,\mathbf{M} + \frac{1-d}{N}\,\mathbf{1}\mathbf{1}^{T}$$
+  * **Block 4 — Convergence Guaranteed:**
+    * Text: By the Perron-Frobenius theorem, G is positive and irreducible — ensuring a unique stationary distribution.
+    * LaTeX: $$\boldsymbol{\pi} = \mathbf{G}\boldsymbol{\pi}$$
 * **Speaker Script:**
-  > "PageRank, introduced by Sergey Brin and Larry Page, simulates a user randomly browsing the web. 
-  > As shown in the equation on the left, it combines two behaviors. With probability $d$, the surfer follows out-links, sharing the node's rank divided by its out-degree $L(u)$. With probability $1-d$, the surfer teleports to a random page. 
-  > In matrix notation, this gives us the Google Matrix $\mathbf{G}$. The teleportation component ensures the matrix is positive, primitive, and irreducible, which by the Perron-Frobenius theorem guarantees that the power iteration method will converge to a unique principal eigenvector."
+  > "PageRank was introduced by Sergey Brin and Larry Page, and it simulates a random user browsing the web.
+  >
+  > The equation in block 1 combines two behaviors. With probability d — the damping factor, set to 0.85 — the surfer follows an out-link, sharing the source node's rank divided by how many links it has. With the remaining probability, 1 minus d, the surfer teleports to a completely random page.
+  >
+  > In matrix form, this becomes the Google Matrix G. The teleportation term is what makes the magic happen — it ensures the matrix is positive, primitive, and irreducible. And by the Perron-Frobenius theorem, that guarantees the algorithm will always converge to one unique ranking — no matter where you start."
 * **Timing:** 1.5 minutes
 
 ---
@@ -154,38 +167,52 @@
 ## Slide 8: PageRank: Convergence & Limitations (8:15 - 9:30)
 * **Canva Template Page:** **Page 8 (Data Collection Quad Layout)**
 * **Visual Setup:**
-  * Top Center: Title.
-  * Four blocks representing the four main limitations of PageRank:
-    * Top Left: Uniform Teleportation (ignores personalized interest)
-    * Bottom Left: Equal Link Weighting (ignores edge strength)
-    * Top Right: Vulnerability to Manipulation (link farms)
-    * Bottom Right: Bias Against New Nodes (accumulated age advantage)
+  * Left: Four content blocks (Time Complexity, Convergence on Transfer, 4 Core Limitations, Domain Impact).
+  * Right: Actual convergence graph from thesis (`Figures/pagerank_convergence.png`) — L2-norm of rank change vs. iteration number, plotted on a log scale.
 * **Slide Content:**
   * **Power Iteration Complexity:** $O(k \times (N + E))$ where $k$ is the number of iterations.
   * **Empirical Convergence:** Stable stationary distribution within $10$--$15$ iterations on our transfer graph ($L_2$-norm difference $\|\boldsymbol{\pi}^{(k)} - \boldsymbol{\pi}^{(k-1)}\|_2 \rightarrow 0$).
   * **Key Limitations:** Uniform teleportation, equal link division, spam vulnerability, and age bias.
 * **Speaker Script:**
-  > "Computationally, PageRank is highly scalable. The time complexity is linear with respect to nodes and edges. On our professional football transfer network, we observe strong convergence within 10 to 15 iterations. 
-  > However, classical PageRank has four core limitations. It assumes teleportation is uniform, it divides rank equally across out-links, it is vulnerable to link farms, and it biases against new nodes. For our football domain, the equal link-weighting is especially problematic because transfer relationships are financially unequal."
-* **Timing:** 1.25 minutes
+  > "Computationally, PageRank is highly scalable. The time complexity is linear with respect to nodes and edges — O(k times N plus E) — so it scales well even on large transfer graphs.
+  >
+  > The graph on the right shows the actual convergence behaviour from our implementation. The Y-axis is the L2-norm of the rank change between two consecutive iterations — essentially how much the scores are still shifting. The X-axis is the iteration number. You can see that the curve drops very steeply in the first few iterations, then flattens out close to zero. On our football transfer network, this happens within 10 to 15 iterations, which confirms that power iteration is both fast and stable on this type of data.
+  >
+  > However, classical PageRank has four core limitations. It assumes teleportation is uniform, it divides rank equally across all out-links regardless of edge strength, it is vulnerable to link farm manipulation, and it naturally biases older nodes with accumulated rank. For our football domain, the equal link-weighting is the most critical flaw — a 1 million euro transfer and a 100 million euro transfer are treated identically. That is exactly why we introduce a fee-weighted graph model in our methodology."
+* **If asked about the graph:** 
+  > "The Y-axis uses a logarithmic scale because the values drop by several orders of magnitude across iterations — a linear scale would make the later iterations look completely flat and unreadable. The log scale lets us clearly see the rate of decay throughout all 20 iterations. The steep initial drop tells us that most of the convergence happens in the first 5 iterations, and the remaining iterations are fine-tuning the distribution."
+* **Timing:** 1.5 minutes
 
 ---
 
 ## Slide 9: HITS: Hubs & Authorities Duality (9:30 - 10:45)
 * **Canva Template Page:** **Page 3 (The Role of a Data Analyst Layout)**
 * **Visual Setup:**
-  * Left: Vertical bar chart and gear graphic (representing SVD/eigenvector calculations).
-  * Right: Definitions of Hubs and Authorities.
+  * 4 content blocks: HITS Algorithm intro, Authority definition, Hub definition, Mutual Reinforcement.
+  * Right side: network graph visual or web_graph_concept.png from thesis figures.
+* **Color Rules on This Slide:**
+  * Title: Cyan `#00D4FF`
+  * "HITS" in title and body: Orange `#FF6B35`
+  * Block headings: Cyan `#00D4FF`
 * **Slide Content:**
-  * **Hyperlink-Induced Topic Search (HITS):** Developed by Jon Kleinberg (1999).
-  * **Dual Node Roles:**
-    * **Authority ($a$):** Node containing high-quality, primary information. A good authority is linked to by many good hubs.
-    * **Hub ($h$):** Node pointing to high-quality directories. A good hub links to many good authorities.
-  * **Mutually Reinforcing Relationship:** Authority scores depend on incoming hubs, and hub scores depend on outgoing authorities.
+  * **Block 1 — HITS Algorithm:**
+    * Hyperlink-Induced Topic Search — developed by Jon Kleinberg (1999). Assigns every node two separate scores instead of one.
+  * **Block 2 — Authority (a):**
+    * A node that contains high-quality, primary information. A good authority is pointed to by many good hubs.
+    * 🔑 In football: a club that attracts players from top feeder clubs (e.g. Man City, Barcelona).
+  * **Block 3 — Hub (h):**
+    * A node that points to many high-quality authorities. A good hub links out to the best destinations.
+    * 🔑 In football: a club that consistently sells players to top-tier clubs (e.g. Monaco, Porto).
+  * **Block 4 — Mutually Reinforcing:**
+    * High authority ← linked to by high hubs. High hub → links out to high authorities. The two scores continuously update each other across iterations.
 * **Speaker Script:**
-  > "In 1999, Jon Kleinberg proposed HITS, taking a different approach. HITS recognizes that web pages serve two distinct semantic functions. 
-  > Authorities contain primary information, and Hubs serve as high-quality index directories pointing to authorities. 
-  > This creates a mutually reinforcing relationship: a node's authority score is high if it is linked to by nodes with high hub scores, and its hub score is high if it points to nodes with high authority scores. This results in a dual-score model."
+  > "In 1999, Jon Kleinberg proposed HITS — Hyperlink-Induced Topic Search — and it takes a fundamentally different approach to PageRank.
+  >
+  > HITS recognizes that nodes in a network serve two distinct roles. An Authority is a node that holds high-quality primary information — think of it as the destination. A Hub is a node that points to many good authorities — think of it as the gateway or feeder.
+  >
+  > In the context of football transfers, an Authority club is one that attracts players from well-connected feeder clubs — like Manchester City or Barcelona. A Hub club is one that consistently sells its players on to top-tier destinations — like Monaco or Porto.
+  >
+  > What makes HITS powerful is that these two scores reinforce each other. Your authority score goes up if high-scoring hubs point to you. Your hub score goes up if you point to high-scoring authorities. They are computed simultaneously in a loop, each iteration making both scores more precise."
 * **Timing:** 1.25 minutes
 
 ---
